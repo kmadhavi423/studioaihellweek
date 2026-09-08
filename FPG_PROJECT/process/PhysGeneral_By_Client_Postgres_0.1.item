@@ -283,7 +283,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tBigQueryInput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -300,7 +299,7 @@
     <elementParameter field="TEXT" name="REDIRECT_URI" value="&quot;http://localhost&quot;" show="false"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM ( &quot; +&#xD;&#xA;&quot;  SELECT *, &quot; +&#xD;&#xA;&quot;    CASE ActivityCode &quot; +&#xD;&#xA;&quot;      WHEN 'MV' THEN 'Voided Manifest' &quot; +&#xD;&#xA;&quot;      WHEN 'D'  THEN 'Delivery' &quot; +&#xD;&#xA;&quot;      WHEN 'X'  THEN 'Exception' &quot; +&#xD;&#xA;&quot;      ELSE ActivityCodeDesc &quot; +&#xD;&#xA;&quot;    END AS ActivityDescription, &quot; +&#xD;&#xA;&quot;    MAX(CASE WHEN ActivityCode IN ('PU','PC','PT') THEN ActivityDate END) &quot; +&#xD;&#xA;&quot;      OVER (PARTITION BY PackageID) AS PickupDate, &quot; +&#xD;&#xA;&quot;    MAX(CASE WHEN ActivityCode IN ('PU','PC','PT') THEN ActivityTime END) &quot; +&#xD;&#xA;&quot;      OVER (PARTITION BY PackageID) AS PickupTime, &quot; +&#xD;&#xA;&quot;    DENSE_RANK() OVER ( &quot; +&#xD;&#xA;&quot;      PARTITION BY ClientID, PackageID &quot; +&#xD;&#xA;&quot;      ORDER BY gmtActivityDate, gmtActivityTime, ActivityType ASC, insert_timestamp_cluster_min &quot; +&#xD;&#xA;&quot;    ) AS rnk &quot; +&#xD;&#xA;&quot;  FROM `fpgproj-309517.HR.general_activity_feed_stub` &quot; +&#xD;&#xA;&quot;  WHERE insert_timestamp_cluster_min > '&quot;+context.origin_max_update_time+&quot;' &quot; +&#xD;&#xA;&quot;    AND TenantID = &quot;+context.tenant_vibe+&quot; &quot; +&#xD;&#xA;&quot;    AND ClientGroup = '&quot;+context.client_group+&quot;' &quot; +&#xD;&#xA;&quot;    AND ClientID &lt;> 4763 AND ClientID &lt;> 5160 &quot; +&#xD;&#xA;&quot;    AND ActivityCode &lt;> 'SP' AND ActivityCode &lt;> 'BR' AND ActivityCode &lt;> 'PL' &quot; +&#xD;&#xA;&quot;    AND AccountType IS NOT NULL &quot; +&#xD;&#xA;&quot;) &quot; +&#xD;&#xA;&quot;WHERE rnk = 1&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM (&#xD;&#xA;  SELECT *,&#xD;&#xA;    ROW_NUMBER() OVER (&#xD;&#xA;      PARTITION BY ClientID, PackageID&#xD;&#xA;      ORDER BY PARSE_DATETIME('%m/%d/%Y %H:%M:%S',&#xD;&#xA;                 CONCAT(CAST(ActivityDate AS STRING), ' ', REPLACE(ActivityTime, '.', ':'))) DESC,&#xD;&#xA;               ImportTime_ms ASC&#xD;&#xA;    ) AS rnk&#xD;&#xA;  FROM `fpgproj-309517.HR.general_activity_feed_stub`  WHERE   &#xD;&#xA;  (     insert_timestamp_cluster_min > '&quot;+context.physical_max_update_time+&quot;'&#xD;&#xA;    AND TenantID = &quot;+context.tenant_vibe+&quot;&#xD;&#xA;))&#xD;&#xA;WHERE rnk = 1&#xD;&#xA;  AND ClientID &lt;> 4763 AND ClientID &lt;> 5160&#xD;&#xA;  AND logicalScan IS NULL&#xD;&#xA;  AND AccountType IS NOT NULL&#xD;&#xA;  AND ActivityCode &lt;> 'PL'&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
@@ -353,7 +352,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tJavaRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -402,7 +400,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tMap" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -445,7 +442,7 @@
       <column comment="" key="false" length="-1" name="reduce_flag" nullable="true" pattern="" precision="-1" sourceType="" type="id_Boolean" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out1">
         <mapperTableEntries name="FirstPhysActivityCode" expression="row11.ActivityCode " type="id_String" nullable="true"/>
@@ -521,7 +518,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlInput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -571,7 +567,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tReplicate" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -611,7 +606,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlOutput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -836,7 +830,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tAggregateRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -864,7 +857,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tJavaRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -945,7 +937,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -976,13 +967,14 @@
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBRow_1"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="880" sizeX="41" sizeY="40">
+  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_2" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tBigQueryInput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -990,24 +982,24 @@
     <elementParameter field="CHECK" name="START" value="true" show="false"/>
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tBigQueryInput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" value="bigquery_id" show="false"/>
     <elementParameter field="DYNAMIC_GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v2:CFndPQN6TObENsE46qpxp/4aairykldKtuTXvkzw" show="false"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v2:lSIpCe2j3XxeAYh3c4TdN1lcwb+MVD8iKHKG/VF9" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/FPG/work/UPS/fpgproj-309517-b9d7e44e169c.json&quot;"/>
     <elementParameter field="FILE" name="CLIENT_LIBRARY_CONFIG_FILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v2:bhHFgJy7Zqi2D9zu5tW42J43o5/H5Rpnh17/M5Gk" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v2:VBP7LNkgup2OUwQ3nDTBRn2EaALqhK8EZ54aO8tF" show="false"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;fpgproj-309517&quot;"/>
     <elementParameter field="TEXT" name="REDIRECT_URI" value="&quot;http://localhost&quot;" show="false"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM (&#xD;&#xA;  SELECT *,&#xD;&#xA;    CASE ActivityCode&#xD;&#xA;      WHEN 'MV' THEN 'Voided Manifest'&#xD;&#xA;      WHEN 'D'  THEN 'Delivery'&#xD;&#xA;      WHEN 'X'  THEN 'Exception'&#xD;&#xA;      ELSE ActivityCodeDesc&#xD;&#xA;    END AS ActivityDescription,&#xD;&#xA;    MAX(CASE WHEN ActivityCode IN ('PU','PC','PT') THEN ActivityDate END)&#xD;&#xA;      OVER (PARTITION BY PackageID) AS PickupDate,&#xD;&#xA;    MAX(CASE WHEN ActivityCode IN ('PU','PC','PT') THEN ActivityTime END)&#xD;&#xA;      OVER (PARTITION BY PackageID) AS PickupTime,&#xD;&#xA;    DENSE_RANK() OVER (&#xD;&#xA;      PARTITION BY ClientID, PackageID&#xD;&#xA;      ORDER BY gmtActivityDate, gmtActivityTime, ActivityType ASC, insert_timestamp_cluster_min&#xD;&#xA;    ) AS rnk&#xD;&#xA;  FROM `fpgproj-309517.HR.general_activity_feed_stub`  WHERE   &#xD;&#xA;  (     insert_timestamp_cluster_min > '&quot;+context.origin_max_update_time+&quot;'&#xD;&#xA;    AND TenantID = &quot;+context.tenant_vibe+&quot;&#xD;&#xA;)&#xD;&#xA;  WHERE ClientID &lt;> 4763 AND ClientID &lt;> 5160&#xD;&#xA;    AND ActivityCode &lt;> 'SP' AND ActivityCode &lt;> 'BR' AND ActivityCode &lt;> 'PL'&#xD;&#xA;    AND AccountType IS NOT NULL&#xD;&#xA;)&#xD;&#xA;WHERE rnk = 1:"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * FROM ( &quot; +&#xD;&#xA;&quot;  SELECT *, &quot; +&#xD;&#xA;&quot;    CASE ActivityCode &quot; +&#xD;&#xA;&quot;      WHEN 'MV' THEN 'Voided Manifest' &quot; +&#xD;&#xA;&quot;      WHEN 'D'  THEN 'Delivery' &quot; +&#xD;&#xA;&quot;      WHEN 'X'  THEN 'Exception' &quot; +&#xD;&#xA;&quot;      ELSE ActivityCodeDesc &quot; +&#xD;&#xA;&quot;    END AS ActivityDescription, &quot; +&#xD;&#xA;&quot;    MAX(CASE WHEN ActivityCode IN ('PU','PC','PT') THEN ActivityDate END) &quot; +&#xD;&#xA;&quot;      OVER (PARTITION BY PackageID) AS PickupDate, &quot; +&#xD;&#xA;&quot;    MAX(CASE WHEN ActivityCode IN ('PU','PC','PT') THEN ActivityTime END) &quot; +&#xD;&#xA;&quot;      OVER (PARTITION BY PackageID) AS PickupTime, &quot; +&#xD;&#xA;&quot;    DENSE_RANK() OVER ( &quot; +&#xD;&#xA;&quot;      PARTITION BY ClientID, PackageID &quot; +&#xD;&#xA;&quot;      ORDER BY gmtActivityDate, gmtActivityTime, ActivityType ASC, insert_timestamp_cluster_min &quot; +&#xD;&#xA;&quot;    ) AS rnk &quot; +&#xD;&#xA;&quot;  FROM `fpgproj-309517.HR.general_activity_feed_stub` &quot; +&#xD;&#xA;&quot;  WHERE insert_timestamp_cluster_min > '&quot;+context.origin_max_update_time+&quot;' &quot; +&#xD;&#xA;&quot;    AND TenantID = &quot;+context.tenant_vibe+&quot; &quot; +&#xD;&#xA;&quot;    AND ClientGroup = '&quot;+context.client_group+&quot;' &quot; +&#xD;&#xA;&quot;    AND ClientID &lt;> 4763 AND ClientID &lt;> 5160 &quot; +&#xD;&#xA;&quot;    AND ActivityCode &lt;> 'SP' AND ActivityCode &lt;> 'BR' AND ActivityCode &lt;> 'PL' &quot; +&#xD;&#xA;&quot;    AND AccountType IS NOT NULL &quot; +&#xD;&#xA;&quot;) &quot; +&#xD;&#xA;&quot;WHERE rnk = 1&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
@@ -1037,19 +1029,569 @@
       <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="SLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ConsigneeSLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ServiceLevelName" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ServiceLevelDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ServiceGroup" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="shipperAccount" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="GenActivityCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="GenActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="GenActivityCountry" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ServiceLevelName" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ServiceLevelDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ServiceGroup" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="shipperAccount" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityCountry" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="-1" name="TenantID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ClientGroup" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ClientGroup" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupDate" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="-1" name="rnk" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="880">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_7" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tJavaRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Custom_Code" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tJavaRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="SimpleDateFormat dateInFmt  = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;);&#xD;&#xA;SimpleDateFormat timeInFmt  = new SimpleDateFormat(&quot;HH.mm.ss&quot;);&#xD;&#xA;SimpleDateFormat timeOutFmt = new SimpleDateFormat(&quot;HHmmss&quot;);&#xD;&#xA;&#xD;&#xA;output_row.ClientID              = row4.ClientID;&#xD;&#xA;output_row.TrackingNumber        = row4.TrackingNumber;&#xD;&#xA;output_row.PackageID             = row4.PackageID;&#xD;&#xA;output_row.ActivityCode          = row4.ActivityCode;&#xD;&#xA;output_row.ActivityType          = row4.ActivityType;&#xD;&#xA;output_row.ActivityDescription   = row4.ActivityDescription;&#xD;&#xA;output_row.gmtOffset             = row4.gmtOffset;&#xD;&#xA;output_row.SLIC                  = row4.SLIC;&#xD;&#xA;output_row.GenActivityCity       = row4.GenActivityCity;&#xD;&#xA;output_row.GenActivityStateProv  = row4.GenActivityStateProv;&#xD;&#xA;output_row.GenActivityCountry    = row4.GenActivityCountry;&#xD;&#xA;output_row.logicalScan           = row4.logicalScan;&#xD;&#xA;output_row.ImportDT              = row4.ImportDT;&#xD;&#xA;output_row.ImportTime_ms         = row4.ImportTime_ms;&#xD;&#xA;output_row.insert_timestamp_cluster_min = row4.insert_timestamp_cluster_min;&#xD;&#xA;&#xD;&#xA;try {&#xD;&#xA;    output_row.OriginDate    = dateInFmt.parse(row4.ActivityDate);   // Date&#xD;&#xA;    output_row.FirstScanDate = dateInFmt.parse(row4.ActivityDate);   // Date, same value&#xD;&#xA;} catch (ParseException e) {&#xD;&#xA;    output_row.OriginDate = null;&#xD;&#xA;    output_row.FirstScanDate = null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;try {&#xD;&#xA;    String t = timeOutFmt.format(timeInFmt.parse(row4.ActivityTime));&#xD;&#xA;    output_row.OriginTime    = t;   // String, 'HHmmss'&#xD;&#xA;    output_row.FirstScanTime = t;   // String, same value&#xD;&#xA;} catch (ParseException e) {&#xD;&#xA;    output_row.OriginTime = null;&#xD;&#xA;    output_row.FirstScanTime = null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;try {&#xD;&#xA;    output_row.PickupDate = (row4.PickupDate != null) ? dateInFmt.parse(row4.PickupDate) : null;&#xD;&#xA;} catch (ParseException e) {&#xD;&#xA;    output_row.PickupDate = null;&#xD;&#xA;}&#xD;&#xA;output_row.PickupTime = row4.PickupTime;   // check staging.origin_activity — if PickupTime needs 'HHmmss' text like OriginTime/FirstScanTime, reformat it the same way instead of passing through raw"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="import java.text.SimpleDateFormat;&#xD;&#xA;import java.text.ParseException;&#xD;&#xA;import java.util.Date;&#xD;&#xA;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_7">
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="SLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityCountry" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginTime" nullable="true" pattern="" precision="-1" sourceType="DATE" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanTime" nullable="true" pattern="" precision="-1" sourceType="TIME" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="480" posY="880">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_2" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tMap" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="2.1 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Processing" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tMap" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_B2ZEYKsdEfGdj5N8Q-GhIA-tMap_2-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true" show="false"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" value="0" show="false"/>
+    <elementParameter field="TEXT" name="JACCARD" value="0" show="false"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="out2">
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityDescr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSortSLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginState" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCountryCC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="reduce_flag" nullable="true" pattern="" precision="-1" sourceType="" type="id_Boolean" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginTime" nullable="true" pattern="" precision="-1" sourceType="DATE" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanTime" nullable="true" pattern="" precision="-1" sourceType="TIME" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSLIC" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties shellMaximized="true"/>
+      <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="out2">
+        <mapperTableEntries name="ClientID" expression="row5.ClientID " type="id_Long" nullable="true"/>
+        <mapperTableEntries name="TrackingNumber" expression="row5.TrackingNumber " type="id_String" nullable="true"/>
+        <mapperTableEntries name="PackageID" expression="row5.PackageID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FirstActivityCode" expression="row5.ActivityCode " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FirstActivity" expression="row5.ActivityType " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FirstActivityDescr" expression="row5.ActivityDescription " type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginSortSLIC" expression="(row5.ActivityCode != null &amp;&amp; !row5.ActivityCode.equals(&quot;M&quot;)) ? row5.SLIC : null" type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginCity" expression="row5.GenActivityCity " type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginState" expression="row5.GenActivityStateProv " type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginCountryCC" expression="row5.GenActivityCountry " type="id_String" nullable="true"/>
+        <mapperTableEntries name="logicalScan" expression="row5.logicalScan " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportDT" expression="row5.ImportDT " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportTime" expression="context.import_time_ref" type="id_String" nullable="true"/>
+        <mapperTableEntries name="reduce_flag" expression="row12.reduce_flag " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="ImportTime_ms" expression="row5.ImportTime_ms " type="id_String" nullable="true"/>
+        <mapperTableEntries name="insert_timestamp_cluster_min" expression="row5.insert_timestamp_cluster_min " type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginDate" expression="row5.OriginDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="FirstScanDate" expression="row5.FirstScanDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="OriginTime" expression="row5.OriginTime " type="id_String" nullable="true"/>
+        <mapperTableEntries name="FirstScanTime" expression="row5.FirstScanTime " type="id_String" nullable="true"/>
+        <mapperTableEntries name="PickupDate" expression="row5.PickupDate " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="PickupTime" expression="row5.PickupTime " type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginOffset" expression="row5.gmtOffset " type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginSLIC" expression="row5.SLIC " type="id_String" nullable="true"/>
+      </outputTables>
+      <inputTables sizeState="INTERMEDIATE" name="row5" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="ClientID" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="TrackingNumber" type="id_String" nullable="true"/>
+        <mapperTableEntries name="PackageID" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityType" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityDescription" type="id_String" nullable="true"/>
+        <mapperTableEntries name="gmtOffset" type="id_String" nullable="true"/>
+        <mapperTableEntries name="SLIC" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GenActivityCity" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GenActivityStateProv" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GenActivityCountry" type="id_String" nullable="true"/>
+        <mapperTableEntries name="logicalScan" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportDT" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportTime_ms" type="id_String" nullable="true"/>
+        <mapperTableEntries name="insert_timestamp_cluster_min" type="id_String" nullable="true"/>
+        <mapperTableEntries name="OriginDate" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="FirstScanDate" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="OriginTime" type="id_String" nullable="true"/>
+        <mapperTableEntries name="FirstScanTime" type="id_String" nullable="true"/>
+        <mapperTableEntries name="PickupDate" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="PickupTime" type="id_String" nullable="true"/>
+      </inputTables>
+      <inputTables sizeState="INTERMEDIATE" name="row12" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="PackageID" expression="row5.PackageID " type="id_String" operator="="/>
+        <mapperTableEntries name="reduce_flag" type="id_Boolean"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="1040">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_4" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlInput" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlInput" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;172.20.18.176&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="POSTGRESQL" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;Adventureworks&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;control&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;qmi&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v2:4ML+8fdCuHSIs7w4iD5555fiLoEGh0eSuYsOB8Q/VYxeZngHmrneFr+V3ItVCA==" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT * from reference.delivered_reduction&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="postgres_id" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="PackageID" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="reduce_flag" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_4">
+      <column comment="" key="false" length="2147483647" name="PackageID" nullable="false" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="reduce_flag" nullable="false" pattern="" precision="0" sourceType="BOOL" type="id_Boolean" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tReplicate" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="880">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tReplicate_2" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tReplicate" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Orchestration" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tReplicate" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tReplicate_2">
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityDescr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSortSLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginState" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCountryCC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="reduce_flag" nullable="true" pattern="" precision="-1" sourceType="" type="id_Boolean" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginTime" nullable="true" pattern="" precision="-1" sourceType="DATE" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanTime" nullable="true" pattern="" precision="-1" sourceType="TIME" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSLIC" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tPostgresqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="880" posY="880">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBOutput_2" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlOutput" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlOutput" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;172.20.18.176&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;Adventureworks&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="POSTGRESQL" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;staging&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;qmi&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v2:7rFcX6kEm6aDAjpa67rPjNpJMfylY3NV05Ngoxh8nZWdsMPaK2Evi9xCVNBKjw==" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;origin_activity&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="NONE"/>
+    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPSERT"/>
+    <elementParameter field="CHECK" name="USE_SPATIAL_OPTIONS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SPATIAL_INDEX" value="false" show="false"/>
+    <elementParameter field="CHECK" name="GEOMETRY_COLUMNS" value="false" show="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="postgres_id" show="false"/>
+    <elementParameter field="CHECK" name="USE_ALTERNATE_SCHEMA" value="false"/>
+    <elementParameter field="TEXT" name="ALTERNATE_SCHEMA" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="SAVE_POINT" value="false" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TABLE" name="ADD_COLS"/>
+    <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
+    <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="ClientID" id="0"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="1"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="2"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="3"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="4"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TrackingNumber" id="5"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="6"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="7"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="8"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PackageID" id="10"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="11"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="12"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="13"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="14"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FirstActivityCode" id="15"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="16"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="17"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="18"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="19"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FirstActivity" id="20"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="21"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="22"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="23"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="24"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FirstActivityDescr" id="25"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="26"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="27"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="28"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginSortSLIC" id="30"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="31"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="32"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="33"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="34"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginCity" id="35"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="36"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="37"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="38"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="39"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginState" id="40"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="41"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="42"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="43"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="44"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginCountryCC" id="45"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="46"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="47"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="48"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="49"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="logicalScan" id="50"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="51"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="52"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="53"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="54"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ImportDT" id="55"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="56"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="57"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="58"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="59"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ImportTime" id="60"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="61"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="62"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="63"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="64"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="reduce_flag" id="65"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="66"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="67"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="68"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="69"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ImportTime_ms" id="70"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="71"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="72"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="73"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="74"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="insert_timestamp_cluster_min" id="75"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="76"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="77"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="78"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="79"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginDate" id="80"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="81"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="82"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="83"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="84"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FirstScanDate" id="85"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="86"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="87"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="88"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="89"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginTime" id="90"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="91"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="92"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="93"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="94"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FirstScanTime" id="95"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="96"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="97"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="98"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="99"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PickupDate" id="100"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="101"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="102"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="103"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="104"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PickupTime" id="105"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="106"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="107"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="108"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="109"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginOffset" id="110"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="111"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="112"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="113"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="114"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OriginSLIC" id="115"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="116"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="117"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="118"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="119"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
+    <elementParameter field="CHECK" name="SUPPORT_NULL_WHERE" value="false"/>
+    <elementParameter field="CHECK" name="CONVERT_COLUMN_TABLE_TO_LOWERCASE" value="false"/>
+    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBOutput_2">
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT8" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityCode" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivity" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityDescr" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSortSLIC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCity" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginState" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCountryCC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="reduce_flag" nullable="true" pattern="" precision="-1" sourceType="BOOL" type="id_Boolean" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginOffset" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSLIC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+    <metadata connector="REJECT" name="REJECT">
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT8" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityCode" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivity" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstActivityDescr" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSortSLIC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCity" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginState" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginCountryCC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="reduce_flag" nullable="true" pattern="" precision="-1" sourceType="BOOL" type="id_Boolean" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FirstScanTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupDate" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PickupTime" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginOffset" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="OriginSLIC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tAggregateRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="680" posY="1040">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tAggregateRow_2" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tAggregateRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Processing" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tAggregateRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="TABLE" name="GROUPBYS"/>
+    <elementParameter field="TABLE" name="OPERATIONS">
+      <elementValue elementRef="OUTPUT_COLUMN" value="max_insert_ts" id="0"/>
+      <elementValue elementRef="FUNCTION" value="max" id="1"/>
+      <elementValue elementRef="INPUT_COLUMN" value="insert_timestamp_cluster_min" id="2"/>
+      <elementValue elementRef="IGNORE_NULL" value="false" id="3"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="LIST_DELIMITER" value="&quot;,&quot;"/>
+    <elementParameter field="CHECK" name="USE_FINANCIAL_PRECISION" value="true"/>
+    <elementParameter field="CHECK" name="CHECK_TYPE_OVERFLOW" value="false"/>
+    <elementParameter field="CHECK" name="CHECK_ULP" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tAggregateRow_2">
+      <column comment="" key="false" length="-1" name="max_insert_ts" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1160" posY="1040">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_8" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tJavaRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Custom_Code" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tJavaRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="&#xD;&#xA;SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyyMMddHHmm&quot;);&#xD;&#xA;try {&#xD;&#xA;    Date maxTs = sdf.parse(row15.max_insert_ts);   // match your actual link name&#xD;&#xA;    Calendar cal = Calendar.getInstance();&#xD;&#xA;    cal.setTime(maxTs);&#xD;&#xA;    cal.add(Calendar.MINUTE, 1);&#xD;&#xA;    context.origin_new_watermark = sdf.format(cal.getTime());&#xD;&#xA;    System.out.println(&quot;New watermark: &quot; + context.origin_new_watermark);&#xD;&#xA;} catch (ParseException e) {&#xD;&#xA;    throw new RuntimeException(&quot;Failed to parse max_insert_ts: &quot; + row15.max_insert_ts, e);&#xD;&#xA;}"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="import java.text.SimpleDateFormat;&#xD;&#xA;import java.text.ParseException;&#xD;&#xA;import java.util.Date;&#xD;&#xA;import java.util.Calendar;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_8"/>
+  </node>
+  <node componentName="tPostgresqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="1200">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_2" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v2:46vF9m25JnUI1FakQtGGV2w4k0EVo3oStcbdgXTq" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;INSERT INTO \&quot;control\&quot;.\&quot;general_activity_watermark\&quot; &quot;&#xD;&#xA;+&quot;(\&quot;customer\&quot;, \&quot;client_group\&quot;, \&quot;extract_name\&quot;, \&quot;max_update_time\&quot;, \&quot;updated_at\&quot;) &quot;&#xD;&#xA;+&quot;VALUES ('&quot;+context.customer+&quot;', '&quot;+context.client_group+&quot;', 'Origin', '&quot;+context.origin_new_watermark+&quot;', now()) &quot;&#xD;&#xA;+&quot;ON CONFLICT (\&quot;customer\&quot;, \&quot;client_group\&quot;, \&quot;extract_name\&quot;) &quot;&#xD;&#xA;+&quot;DO UPDATE SET \&quot;max_update_time\&quot; = EXCLUDED.\&quot;max_update_time\&quot;, \&quot;updated_at\&quot; = EXCLUDED.\&quot;updated_at\&quot;&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBRow_2"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tDBConnection_1">
@@ -1085,11 +1627,9 @@
   </connection>
   <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tJavaRow_6">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tDBRow_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk1" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row11" lineStyle="0" metaname="tJavaRow_6" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_6" target="tMap_1">
@@ -1105,37 +1645,62 @@
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="8"/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row11" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tReplicate_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="out1" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row9" lineStyle="8" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row9" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row8" lineStyle="0" metaname="tReplicate_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tReplicate_1" target="tAggregateRow_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row8" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row7" lineStyle="0" metaname="tReplicate_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tReplicate_1" target="tDBOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row7" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row10" lineStyle="0" metaname="tAggregateRow_1" offsetLabelX="0" offsetLabelY="0" source="tAggregateRow_1" target="tJavaRow_4">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row10" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row6" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tJavaRow_5">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row6" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tBigQueryInput_2" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_2" target="tJavaRow_7">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryInput_2" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_2" target="tDBRow_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk2" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tJavaRow_7" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_7" target="tMap_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row5" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="out2" lineStyle="0" metaname="out2" offsetLabelX="0" offsetLabelY="0" source="tMap_2" target="tReplicate_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="out2" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row12" lineStyle="8" metaname="tDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tDBInput_4" target="tMap_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row12" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row14" lineStyle="0" metaname="tReplicate_2" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tReplicate_2" target="tDBOutput_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row14" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row13" lineStyle="0" metaname="tReplicate_2" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tReplicate_2" target="tAggregateRow_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row13" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row15" lineStyle="0" metaname="tAggregateRow_2" offsetLabelX="0" offsetLabelY="0" source="tAggregateRow_2" target="tJavaRow_8">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row15" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
@@ -1175,6 +1740,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_2" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_2" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
