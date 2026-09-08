@@ -280,7 +280,7 @@
       <column comment="" key="false" length="-1" name="manifest_lookback_start_dt" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="280">
+  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="280">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_1" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tBigQueryInput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -289,7 +289,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tBigQueryInput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -350,7 +349,7 @@
       <column comment="" key="false" length="-1" name="UTCOffSet" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcDT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ExcDT_Time" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -361,7 +360,7 @@
       <column comment="" defaultValue="" key="false" length="-1" name="rnk" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="280" posY="280">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="320" posY="280">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_1" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tMap" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="2.1 (ALPHA)" show="false"/>
@@ -369,7 +368,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tMap" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -414,7 +412,7 @@
       <column comment="" key="false" length="-1" name="UTCOffSet" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="ExcDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="ExcDT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="true" length="-1" name="ExcDT_Time" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -428,6 +426,7 @@
       <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="Unique_Key" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
       <uiProperties shellMaximized="true"/>
@@ -461,7 +460,7 @@
         <mapperTableEntries name="UTCOffSet" expression="row3.UTCOffSet " type="id_String" nullable="true"/>
         <mapperTableEntries name="rtsInd" expression="row3.rtsInd " type="id_String" nullable="true"/>
         <mapperTableEntries name="returnServiceIndictr" expression="row3.returnServiceIndictr " type="id_String" nullable="true"/>
-        <mapperTableEntries name="ExcDT" expression="row3.ExcDT " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcDT" expression="row3.ExcDT " type="id_Date" nullable="true"/>
         <mapperTableEntries name="ExcDT_Time" expression="row3.ExcDT_Time " type="id_String" nullable="true"/>
         <mapperTableEntries name="ImportDT" expression="row3.ImportDT " type="id_String" nullable="true"/>
         <mapperTableEntries name="ImportTime_ms" expression="row3.ImportTime_ms " type="id_String" nullable="true"/>
@@ -475,6 +474,7 @@
         <mapperTableEntries name="gmtOffset" type="id_String" nullable="true"/>
         <mapperTableEntries name="Unique_Key" expression="row3.TrackingNumber + &quot;|&quot; + row3.rnk " type="id_String" nullable="true"/>
         <mapperTableEntries name="ExceptionStatusDesc" expression="row6.middle_text_description " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcReasonCode" expression="row3.ExcReasonCode " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row3" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="ActivityCode" type="id_String" nullable="true"/>
@@ -525,7 +525,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="440">
+  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_2" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlInput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -534,7 +534,6 @@
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlInput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -576,6 +575,7 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="viewable" id="8"/>
       <elementValue elementRef="TRIM" value="false" id="9"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_2">
       <column comment="" key="false" length="2147483647" name="twobyte_exception_code" nullable="false" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="2147483647" name="short_text_description" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -584,119 +584,19 @@
       <column comment="" key="false" length="2147483647" name="viewable" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="280">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_1" show="false"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tLogRow" show="false"/>
+  <node componentName="tUnite" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="280">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tUnite_1" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tUnite" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
-    <elementParameter field="TEXT" name="FAMILY" value="Logs_Errors" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Orchestration" show="false"/>
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
-    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tLogRow" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.Unite" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
-    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true" show="false"/>
-    <elementParameter field="RADIO" name="PRINT_LABEL" value="false" show="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false" show="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" value="false" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false" show="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false" show="false"/>
-    <elementParameter field="TABLE" name="LENGTHS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="ActivityCode" id="0"/>
-      <elementValue elementRef="LENGTH" value="10" id="1"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="AccountType" id="2"/>
-      <elementValue elementRef="LENGTH" value="10" id="3"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcStatusCode" id="4"/>
-      <elementValue elementRef="LENGTH" value="10" id="5"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="billToAccountNumber" id="6"/>
-      <elementValue elementRef="LENGTH" value="10" id="7"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ClientID" id="8"/>
-      <elementValue elementRef="LENGTH" value="10" id="9"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionReasonFullDescription" id="10"/>
-      <elementValue elementRef="LENGTH" value="10" id="11"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionReasonShortDescription" id="12"/>
-      <elementValue elementRef="LENGTH" value="10" id="13"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionStatusShortDescription" id="14"/>
-      <elementValue elementRef="LENGTH" value="10" id="15"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcReportCountry" id="16"/>
-      <elementValue elementRef="LENGTH" value="10" id="17"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcSLIC" id="18"/>
-      <elementValue elementRef="LENGTH" value="10" id="19"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="logicalScan" id="20"/>
-      <elementValue elementRef="LENGTH" value="10" id="21"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PackageID" id="22"/>
-      <elementValue elementRef="LENGTH" value="10" id="23"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ReasonCdMiddle" id="24"/>
-      <elementValue elementRef="LENGTH" value="10" id="25"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ReasonCdVIEWABLE" id="26"/>
-      <elementValue elementRef="LENGTH" value="10" id="27"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ReasonVIEWABLE" id="28"/>
-      <elementValue elementRef="LENGTH" value="10" id="29"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdFullText" id="30"/>
-      <elementValue elementRef="LENGTH" value="10" id="31"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdMiddle" id="32"/>
-      <elementValue elementRef="LENGTH" value="10" id="33"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdShort" id="34"/>
-      <elementValue elementRef="LENGTH" value="10" id="35"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdVIEWABLE" id="36"/>
-      <elementValue elementRef="LENGTH" value="10" id="37"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionIsVIEWABLE" id="38"/>
-      <elementValue elementRef="LENGTH" value="10" id="39"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TNRoleVsAlternate" id="40"/>
-      <elementValue elementRef="LENGTH" value="10" id="41"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="altTrackNr" id="42"/>
-      <elementValue elementRef="LENGTH" value="10" id="43"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TrackingNumber" id="44"/>
-      <elementValue elementRef="LENGTH" value="10" id="45"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcActivityCity" id="46"/>
-      <elementValue elementRef="LENGTH" value="10" id="47"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcActivityStateProv" id="48"/>
-      <elementValue elementRef="LENGTH" value="10" id="49"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UTCOffSet" id="50"/>
-      <elementValue elementRef="LENGTH" value="10" id="51"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="rtsInd" id="52"/>
-      <elementValue elementRef="LENGTH" value="10" id="53"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="returnServiceIndictr" id="54"/>
-      <elementValue elementRef="LENGTH" value="10" id="55"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcDT" id="56"/>
-      <elementValue elementRef="LENGTH" value="10" id="57"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcDT_Time" id="58"/>
-      <elementValue elementRef="LENGTH" value="10" id="59"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ImportDT" id="60"/>
-      <elementValue elementRef="LENGTH" value="10" id="61"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ImportTime_ms" id="62"/>
-      <elementValue elementRef="LENGTH" value="10" id="63"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcResolutionCode" id="64"/>
-      <elementValue elementRef="LENGTH" value="10" id="65"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="insert_timestamp_cluster_min" id="66"/>
-      <elementValue elementRef="LENGTH" value="10" id="67"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Exception_Record_Rank" id="68"/>
-      <elementValue elementRef="LENGTH" value="10" id="69"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SysSource" id="70"/>
-      <elementValue elementRef="LENGTH" value="10" id="71"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Exception_Curr_Flag" id="72"/>
-      <elementValue elementRef="LENGTH" value="10" id="73"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcActivityCityFinal" id="74"/>
-      <elementValue elementRef="LENGTH" value="10" id="75"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExcReportCountryCode" id="76"/>
-      <elementValue elementRef="LENGTH" value="10" id="77"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="gmtOffset" id="78"/>
-      <elementValue elementRef="LENGTH" value="10" id="79"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Unique_Key" id="80"/>
-      <elementValue elementRef="LENGTH" value="10" id="81"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionStatusDesc" id="82"/>
-      <elementValue elementRef="LENGTH" value="10" id="83"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100" show="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tLogRow_1">
+    <metadata connector="FLOW" name="tUnite_1">
       <column comment="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="AccountType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ExcStatusCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -725,7 +625,7 @@
       <column comment="" key="false" length="-1" name="UTCOffSet" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="ExcDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="ExcDT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="true" length="-1" name="ExcDT_Time" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -739,16 +639,17 @@
       <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="Unique_Key" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="600">
+  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_2" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tBigQueryInput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
     <elementParameter field="TEXT" name="FAMILY" value="Big Data/Google BigQuery" show="false"/>
-    <elementParameter field="CHECK" name="START" value="true" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tBigQueryInput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
@@ -815,7 +716,7 @@
       <column comment="" defaultValue="" key="false" length="-1" name="rnk" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="240" posY="600">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_3" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tJavaRow" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
@@ -863,7 +764,7 @@
       <column comment="" key="false" length="-1" name="excDTParsed" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_Date" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="480" posY="600">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="520" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_2" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tMap" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="2.1 (ALPHA)" show="false"/>
@@ -929,13 +830,14 @@
       <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="Unique_Key" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
       <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out2">
         <mapperTableEntries name="ActivityCode" expression="row7.activityCodeTrimmed" type="id_String" nullable="true"/>
-        <mapperTableEntries name="AccountType" expression="row7.activityCodeTrimmed " type="id_String" nullable="true"/>
+        <mapperTableEntries name="AccountType" expression="" type="id_String" nullable="true"/>
         <mapperTableEntries name="ExcStatusCode" expression="&quot;GB&quot; " type="id_String" nullable="true"/>
         <mapperTableEntries name="billToAccountNumber" expression="row7.billToAccountNumber " type="id_String" nullable="true"/>
         <mapperTableEntries name="ClientID" expression="row7.ClientID " type="id_Long" nullable="true"/>
@@ -976,6 +878,7 @@
         <mapperTableEntries name="gmtOffset" expression="row7.gmtOffset " type="id_String" nullable="true"/>
         <mapperTableEntries name="Unique_Key" expression="row7.TrackingNumber + &quot;|&quot; + &quot;99&quot; + row7.rnk " type="id_String" nullable="true"/>
         <mapperTableEntries name="ExceptionStatusDesc" expression="&quot;Delivery Attempted&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcReasonCode" expression="row7.activityCodeTrimmed " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row7" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="ActCode" type="id_String" nullable="true"/>
@@ -1026,7 +929,7 @@
       </inputTables>
     </nodeData>
   </node>
-  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="760">
+  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="760">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_3" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlInput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -1076,6 +979,7 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="viewable" id="8"/>
       <elementValue elementRef="TRIM" value="false" id="9"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_3">
       <column comment="" key="false" length="2147483647" name="twobyte_exception_code" nullable="false" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="2147483647" name="short_text_description" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -1084,7 +988,7 @@
       <column comment="" key="false" length="2147483647" name="viewable" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="880">
+  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_4" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlInput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -1134,6 +1038,7 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="viewable" id="8"/>
       <elementValue elementRef="TRIM" value="false" id="9"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_4">
       <column comment="" key="false" length="2147483647" name="twobyte_exception_code" nullable="false" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="2147483647" name="short_text_description" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -1142,8 +1047,8 @@
       <column comment="" key="false" length="2147483647" name="viewable" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="720" posY="600">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_2" show="false"/>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="920" posY="280">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_1" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tLogRow" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
     <elementParameter field="TEXT" name="FAMILY" value="Logs_Errors" show="false"/>
@@ -1153,17 +1058,17 @@
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tLogRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="true"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="false"/>
     <elementParameter field="RADIO" name="VERTICAL" value="false"/>
     <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true" show="false"/>
     <elementParameter field="RADIO" name="PRINT_LABEL" value="false" show="false"/>
     <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false" show="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" value="false" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false" show="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false" show="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
     <elementParameter field="TABLE" name="LENGTHS" show="false">
       <elementValue elementRef="SCHEMA_COLUMN" value="ActivityCode" id="0"/>
       <elementValue elementRef="LENGTH" value="10" id="1"/>
@@ -1249,11 +1154,13 @@
       <elementValue elementRef="LENGTH" value="10" id="81"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionStatusDesc" id="82"/>
       <elementValue elementRef="LENGTH" value="10" id="83"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcReasonCode" id="84"/>
+      <elementValue elementRef="LENGTH" value="10" id="85"/>
     </elementParameter>
     <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100" show="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tLogRow_2">
+    <metadata connector="FLOW" name="tLogRow_1">
       <column comment="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="AccountType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ExcStatusCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -1296,9 +1203,10 @@
       <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="Unique_Key" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="80" posY="1040">
+  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="1040">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_3" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tBigQueryInput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -1339,37 +1247,234 @@
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQueryInput_3">
-      <column comment="" key="false" length="-1" name="ActCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ActivityType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="AccountType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="billToAccountNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="reasonCodeRddVisibility" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="DelDate" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DelDate_Time" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DelTypeID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ISO" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="Tenant" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="altTrackNr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="City" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="SLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="STATE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DelActRecordCd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityStatusReasonCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Tenant" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="-1" name="TenantID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ActivityType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ActivityDate" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ActivityTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="billToAccountNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="CurrentStatusShortDesc" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="CurrentStatusDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="SLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="GenActivityCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="GenActivityDateTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="reasonCodeRddVisibility" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="GenActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="-1" name="ClientGroup" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="-1" name="rnk" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="1040">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="360" posY="1040">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_4" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tJavaRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Custom_Code" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tJavaRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="//ExcDT = Date(date#(ActivityDate, 'MM/DD/YYYY'))&#xD;&#xA;SimpleDateFormat activityDateFmt = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;);&#xD;&#xA;Date excDT = null;&#xD;&#xA;if (row5.ActivityDate != null) {&#xD;&#xA; try { excDT = activityDateFmt.parse(row5.ActivityDate); }&#xD;&#xA; catch (ParseException e) { throw new RuntimeException(&quot;Bad ActivityDate: &quot; + row5.ActivityDate, e); }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;//ExcDT_Time — OPTION A: straight passthrough, matches the script literally&#xD;&#xA;&#xD;&#xA;SimpleDateFormat fullDtFmt = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);&#xD;&#xA;SimpleDateFormat outTimeFmt = new SimpleDateFormat(&quot;HH.mm.ss&quot;);&#xD;&#xA;String excDTTime = null;&#xD;&#xA;if (row5.GenActivityDateTime != null) {&#xD;&#xA;    try { excDTTime = outTimeFmt.format(fullDtFmt.parse(row5.GenActivityDateTime)); }&#xD;&#xA;    catch (ParseException e) { throw new RuntimeException(&quot;Bad GenActivityDateTime: &quot; + row5.GenActivityDateTime, e); }&#xD;&#xA;}&#xD;&#xA;//ExcDT_Time — OPTION B: only use this if GenActivityDateTime turns out to be a&#xD;&#xA;//full datetime string, not already time-only (see flag above)&#xD;&#xA;//SimpleDateFormat fullDtFmt = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);&#xD;&#xA;//SimpleDateFormat outTimeFmt = new SimpleDateFormat(&quot;HH.mm.ss&quot;);&#xD;&#xA;//String excDTTime = null;&#xD;&#xA;//if (row5.GenActivityDateTime != null) {&#xD;&#xA;//  try { excDTTime = outTimeFmt.format(fullDtFmt.parse(row5.GenActivityDateTime)); }&#xD;&#xA;//  catch (ParseException e) { throw new RuntimeException(&quot;Bad GenActivityDateTime: &quot; + row5.GenActivityDateTime, e); }&#xD;&#xA;//}&#xD;&#xA;&#xD;&#xA;row10.PackageID = row5.PackageID;&#xD;&#xA;row10.TrackingNumber = row5.TrackingNumber;&#xD;&#xA;row10.ClientID = row5.ClientID;&#xD;&#xA;row10.ActivityCode = row5.ActivityCode;&#xD;&#xA;row10.billToAccountNumber = row5.billToAccountNumber;&#xD;&#xA;row10.ActivityStatusReasonCode = row5.ActivityStatusReasonCode;&#xD;&#xA;row10.CurrentStatusDescription = row5.CurrentStatusDescription;&#xD;&#xA;row10.CurrentStatusShortDesc = row5.CurrentStatusShortDesc;&#xD;&#xA;row10.ImportDT = row5.ImportDT;&#xD;&#xA;row10.ImportTime_ms = row5.ImportTime_ms;&#xD;&#xA;row10.SLIC = row5.SLIC;&#xD;&#xA;row10.GenActivityCity = row5.GenActivityCity;&#xD;&#xA;row10.GenActivityStateProv = row5.GenActivityStateProv;&#xD;&#xA;row10.gmtOffset = row5.gmtOffset;&#xD;&#xA;row10.insert_timestamp_cluster_min = row5.insert_timestamp_cluster_min;&#xD;&#xA;row10.rnk = row5.rnk;&#xD;&#xA;row10.excDT = excDT;&#xD;&#xA;row10.excDTTime = excDTTime;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="import java.text.SimpleDateFormat;&#xD;&#xA;import java.text.ParseException;&#xD;&#xA;import java.util.Date;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_4">
+      <column comment="" key="false" length="-1" name="AccountType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityStatusReasonCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Tenant" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="TenantID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityDate" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ActivityTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="billToAccountNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CurrentStatusShortDesc" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CurrentStatusDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="SLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityDateTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="reasonCodeRddVisibility" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GenActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ClientGroup" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="rnk" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="excDT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="excDTTime" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="560" posY="1040">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_3" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tMap" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="2.1 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Processing" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tMap" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_vGYycKnyEfGb6N3o9l5IMA-tMap_3-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true" show="false"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" value="0" show="false"/>
+    <elementParameter field="TEXT" name="JACCARD" value="0" show="false"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="out" name="out">
+      <column comment="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="AccountType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcStatusCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="billToAccountNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionReasonFullDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionReasonShortDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionStatusShortDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReportCountry" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcSLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ReasonCdMiddle" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ReasonCdVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ReasonVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdFullText" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdMiddle" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdShort" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionIsVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TNRoleVsAlternate" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="altTrackNr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcActivityCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="UTCOffSet" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="ExcDT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="ExcDT_Time" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcResolutionCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="Exception_Record_Rank" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="SysSource" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Exception_Curr_Flag" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcActivityCityFinal" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReportCountryCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Unique_Key" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties shellMaximized="true"/>
+      <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="out">
+        <mapperTableEntries name="ActivityCode" expression="row10.ActivityCode " type="id_String" nullable="true"/>
+        <mapperTableEntries name="AccountType" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcStatusCode" expression="row10.ActivityStatusReasonCode " type="id_String" nullable="true"/>
+        <mapperTableEntries name="billToAccountNumber" expression="row10.billToAccountNumber " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ClientID" expression="row10.ClientID " type="id_Long" nullable="true"/>
+        <mapperTableEntries name="ExceptionReasonFullDescription" expression="row11.full_text_description " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExceptionReasonShortDescription" expression="row11.short_text_description " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExceptionStatusShortDescription" expression="row10.CurrentStatusShortDesc " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcReportCountry" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcSLIC" expression="row10.SLIC " type="id_String" nullable="true"/>
+        <mapperTableEntries name="logicalScan" type="id_String" nullable="true"/>
+        <mapperTableEntries name="PackageID" expression="row10.PackageID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ReasonCdMiddle" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ReasonCdVIEWABLE" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ReasonVIEWABLE" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ResolutionCdFullText" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ResolutionCdMiddle" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ResolutionCdShort" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ResolutionCdVIEWABLE" expression="(row11.viewable != null &amp;&amp; row11.viewable.length()>=2) ? row11.viewable.substring(0,2) : row11.viewable " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ResolutionIsVIEWABLE" type="id_String" nullable="true"/>
+        <mapperTableEntries name="TNRoleVsAlternate" type="id_String" nullable="true"/>
+        <mapperTableEntries name="altTrackNr" type="id_String" nullable="true"/>
+        <mapperTableEntries name="TrackingNumber" expression="row10.TrackingNumber " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcActivityCity" expression="row10.GenActivityCity " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcActivityStateProv" expression="row10.GenActivityStateProv " type="id_String" nullable="true"/>
+        <mapperTableEntries name="UTCOffSet" type="id_String" nullable="true"/>
+        <mapperTableEntries name="rtsInd" type="id_String" nullable="true"/>
+        <mapperTableEntries name="returnServiceIndictr" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcDT" expression="row10.excDT " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="ExcDT_Time" expression="row10.excDTTime " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportDT" expression="row10.ImportDT " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportTime_ms" expression="row10.ImportTime_ms " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcResolutionCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="insert_timestamp_cluster_min" expression="row10.insert_timestamp_cluster_min " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Exception_Record_Rank" expression="50L " type="id_Long" nullable="true"/>
+        <mapperTableEntries name="SysSource" expression="&quot;Gen&quot; " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Exception_Curr_Flag" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcActivityCityFinal" expression="row10.GenActivityCity " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcReportCountryCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="gmtOffset" expression="row10.gmtOffset " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Unique_Key" expression="row10.PackageID + &quot;|&quot; + &quot;50&quot; + row10.rnk " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExceptionStatusDesc" expression="row10.CurrentStatusDescription " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ExcReasonCode" expression="row10.ActivityCode " type="id_String" nullable="true"/>
+      </outputTables>
+      <inputTables sizeState="INTERMEDIATE" name="row10" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="AccountType" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityStatusReasonCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="gmtOffset" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Tenant" type="id_String" nullable="true"/>
+        <mapperTableEntries name="TenantID" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="ClientID" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="TrackingNumber" type="id_String" nullable="true"/>
+        <mapperTableEntries name="PackageID" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityCode" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityType" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityDate" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ActivityTime" type="id_String" nullable="true"/>
+        <mapperTableEntries name="billToAccountNumber" type="id_String" nullable="true"/>
+        <mapperTableEntries name="CurrentStatusShortDesc" type="id_String" nullable="true"/>
+        <mapperTableEntries name="CurrentStatusDescription" type="id_String" nullable="true"/>
+        <mapperTableEntries name="SLIC" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportDT" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ImportTime_ms" type="id_String" nullable="true"/>
+        <mapperTableEntries name="insert_timestamp_cluster_min" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GenActivityCity" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GenActivityDateTime" type="id_String" nullable="true"/>
+        <mapperTableEntries name="reasonCodeRddVisibility" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GenActivityStateProv" type="id_String" nullable="true"/>
+        <mapperTableEntries name="ClientGroup" type="id_String" nullable="true"/>
+        <mapperTableEntries name="rnk" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="excDT" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="excDTTime" type="id_String" nullable="true"/>
+      </inputTables>
+      <inputTables sizeState="INTERMEDIATE" name="row11" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="twobyte_exception_code" expression="row10.ActivityCode " type="id_String"/>
+        <mapperTableEntries name="short_text_description" type="id_String" nullable="true"/>
+        <mapperTableEntries name="middle_text_description" type="id_String" nullable="true"/>
+        <mapperTableEntries name="full_text_description" type="id_String" nullable="true"/>
+        <mapperTableEntries name="viewable" type="id_String" nullable="true"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="720" posY="1040">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_3" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tLogRow" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
@@ -1381,107 +1486,212 @@
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tLogRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="true"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="false"/>
     <elementParameter field="RADIO" name="VERTICAL" value="false"/>
     <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true" show="false"/>
     <elementParameter field="RADIO" name="PRINT_LABEL" value="false" show="false"/>
     <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false" show="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" value="false" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false" show="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false" show="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false" show="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
     <elementParameter field="TABLE" name="LENGTHS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="ActCode" id="0"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ActivityCode" id="0"/>
       <elementValue elementRef="LENGTH" value="10" id="1"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ActivityType" id="2"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="AccountType" id="2"/>
       <elementValue elementRef="LENGTH" value="10" id="3"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="AccountType" id="4"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcStatusCode" id="4"/>
       <elementValue elementRef="LENGTH" value="10" id="5"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="billToAccountNumber" id="6"/>
       <elementValue elementRef="LENGTH" value="10" id="7"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="reasonCodeRddVisibility" id="8"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ClientID" id="8"/>
       <elementValue elementRef="LENGTH" value="10" id="9"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ClientID" id="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionReasonFullDescription" id="10"/>
       <elementValue elementRef="LENGTH" value="10" id="11"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DelDate" id="12"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionReasonShortDescription" id="12"/>
       <elementValue elementRef="LENGTH" value="10" id="13"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DelDate_Time" id="14"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionStatusShortDescription" id="14"/>
       <elementValue elementRef="LENGTH" value="10" id="15"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DelTypeID" id="16"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcReportCountry" id="16"/>
       <elementValue elementRef="LENGTH" value="10" id="17"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ImportDT" id="18"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcSLIC" id="18"/>
       <elementValue elementRef="LENGTH" value="10" id="19"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ImportTime" id="20"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="logicalScan" id="20"/>
       <elementValue elementRef="LENGTH" value="10" id="21"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ImportTime_ms" id="22"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PackageID" id="22"/>
       <elementValue elementRef="LENGTH" value="10" id="23"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PackageID" id="24"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ReasonCdMiddle" id="24"/>
       <elementValue elementRef="LENGTH" value="10" id="25"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ISO" id="26"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ReasonCdVIEWABLE" id="26"/>
       <elementValue elementRef="LENGTH" value="10" id="27"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Tenant" id="28"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ReasonVIEWABLE" id="28"/>
       <elementValue elementRef="LENGTH" value="10" id="29"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TrackingNumber" id="30"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdFullText" id="30"/>
       <elementValue elementRef="LENGTH" value="10" id="31"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="insert_timestamp_cluster_min" id="32"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdMiddle" id="32"/>
       <elementValue elementRef="LENGTH" value="10" id="33"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="altTrackNr" id="34"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdShort" id="34"/>
       <elementValue elementRef="LENGTH" value="10" id="35"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="City" id="36"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionCdVIEWABLE" id="36"/>
       <elementValue elementRef="LENGTH" value="10" id="37"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="SLIC" id="38"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ResolutionIsVIEWABLE" id="38"/>
       <elementValue elementRef="LENGTH" value="10" id="39"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="STATE" id="40"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TNRoleVsAlternate" id="40"/>
       <elementValue elementRef="LENGTH" value="10" id="41"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="gmtOffset" id="42"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="altTrackNr" id="42"/>
       <elementValue elementRef="LENGTH" value="10" id="43"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="rtsInd" id="44"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TrackingNumber" id="44"/>
       <elementValue elementRef="LENGTH" value="10" id="45"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="returnServiceIndictr" id="46"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcActivityCity" id="46"/>
       <elementValue elementRef="LENGTH" value="10" id="47"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DelActRecordCd" id="48"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcActivityStateProv" id="48"/>
       <elementValue elementRef="LENGTH" value="10" id="49"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TenantID" id="50"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UTCOffSet" id="50"/>
       <elementValue elementRef="LENGTH" value="10" id="51"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ClientGroup" id="52"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="rtsInd" id="52"/>
       <elementValue elementRef="LENGTH" value="10" id="53"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="rnk" id="54"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="returnServiceIndictr" id="54"/>
       <elementValue elementRef="LENGTH" value="10" id="55"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcDT" id="56"/>
+      <elementValue elementRef="LENGTH" value="10" id="57"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcDT_Time" id="58"/>
+      <elementValue elementRef="LENGTH" value="10" id="59"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ImportDT" id="60"/>
+      <elementValue elementRef="LENGTH" value="10" id="61"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ImportTime_ms" id="62"/>
+      <elementValue elementRef="LENGTH" value="10" id="63"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcResolutionCode" id="64"/>
+      <elementValue elementRef="LENGTH" value="10" id="65"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="insert_timestamp_cluster_min" id="66"/>
+      <elementValue elementRef="LENGTH" value="10" id="67"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Exception_Record_Rank" id="68"/>
+      <elementValue elementRef="LENGTH" value="10" id="69"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SysSource" id="70"/>
+      <elementValue elementRef="LENGTH" value="10" id="71"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Exception_Curr_Flag" id="72"/>
+      <elementValue elementRef="LENGTH" value="10" id="73"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcActivityCityFinal" id="74"/>
+      <elementValue elementRef="LENGTH" value="10" id="75"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcReportCountryCode" id="76"/>
+      <elementValue elementRef="LENGTH" value="10" id="77"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="gmtOffset" id="78"/>
+      <elementValue elementRef="LENGTH" value="10" id="79"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Unique_Key" id="80"/>
+      <elementValue elementRef="LENGTH" value="10" id="81"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExceptionStatusDesc" id="82"/>
+      <elementValue elementRef="LENGTH" value="10" id="83"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ExcReasonCode" id="84"/>
+      <elementValue elementRef="LENGTH" value="10" id="85"/>
     </elementParameter>
     <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100" show="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tLogRow_3">
-      <column comment="" key="false" length="-1" name="ActCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ActivityType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+    <metadata connector="FLOW" label="out" name="tLogRow_3">
+      <column comment="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="AccountType" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcStatusCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="billToAccountNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="reasonCodeRddVisibility" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INTEGER" type="id_Long" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="DelDate" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DelDate_Time" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DelTypeID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportTime" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ISO" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="Tenant" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="altTrackNr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="City" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="SLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="STATE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DelActRecordCd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="TenantID" nullable="true" pattern="" precision="-1" sourceType="INTEGER" type="id_Long" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ClientGroup" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="rnk" nullable="true" pattern="" precision="-1" sourceType="INTEGER" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionReasonFullDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionReasonShortDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionStatusShortDescription" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReportCountry" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcSLIC" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ReasonCdMiddle" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ReasonCdVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ReasonVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdFullText" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdMiddle" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdShort" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionCdVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ResolutionIsVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="TNRoleVsAlternate" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="altTrackNr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcActivityCity" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="UTCOffSet" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="ExcDT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="STRING" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="true" length="-1" name="ExcDT_Time" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcResolutionCode" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="Exception_Record_Rank" nullable="true" pattern="" precision="-1" sourceType="INT64" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="SysSource" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Exception_Curr_Flag" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcActivityCityFinal" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReportCountryCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Unique_Key" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tPostgresqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="1200">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_5" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlInput" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlInput" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v2:0kOiLSkYsJqo254IW7zm5KSZgnifOipJR+Hl3BUd" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;reference.exceptions_mapping&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select * from reference.exceptions_mapping&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="postgres_id" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CURSOR" value="false"/>
+    <elementParameter field="TEXT" name="CURSOR_SIZE" value="1000" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="twobyte_exception_code" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="short_text_description" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="middle_text_description" id="4"/>
+      <elementValue elementRef="TRIM" value="false" id="5"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="full_text_description" id="6"/>
+      <elementValue elementRef="TRIM" value="false" id="7"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="viewable" id="8"/>
+      <elementValue elementRef="TRIM" value="false" id="9"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_5">
+      <column comment="" key="false" length="2147483647" name="twobyte_exception_code" nullable="false" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2147483647" name="short_text_description" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2147483647" name="middle_text_description" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2147483647" name="full_text_description" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2147483647" name="viewable" nullable="true" pattern="" precision="0" sourceType="TEXT" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tDBConnection_1">
@@ -1517,23 +1727,19 @@
   </connection>
   <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3" show="false"/>
   </connection>
-  <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tLogRow_1">
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="ExceptionStatusDesc" id="0"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
-    </elementParameter>
+  <connection connectorName="FLOW" label="out1" lineStyle="10" mergeOrder="1" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tUnite_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="out1" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row6" lineStyle="8" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row6" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row12" lineStyle="0" metaname="tUnite_1" offsetLabelX="0" offsetLabelY="0" source="tUnite_1" target="tLogRow_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row12" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tBigQueryInput_2" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_2" target="tJavaRow_3">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -1638,7 +1844,7 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row7" show="false"/>
   </connection>
-  <connection connectorName="FLOW" label="out2" lineStyle="0" metaname="out2" offsetLabelX="0" offsetLabelY="0" source="tMap_2" target="tLogRow_2">
+  <connection connectorName="FLOW" label="out2" lineStyle="10" mergeOrder="2" metaname="out2" offsetLabelX="0" offsetLabelY="0" source="tMap_2" target="tUnite_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="out2" show="false"/>
   </connection>
@@ -1650,10 +1856,30 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row9" show="false"/>
   </connection>
-  <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tBigQueryInput_3" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_3" target="tLogRow_3">
+  <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tBigQueryInput_3" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_3" target="tJavaRow_4">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row5" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row10" lineStyle="0" metaname="tJavaRow_4" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_4" target="tMap_3">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row10" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="out" lineStyle="0" metaname="out" offsetLabelX="0" offsetLabelY="0" source="tMap_3" target="tLogRow_3">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="ExcReasonCode" id="0"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="out" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row11" lineStyle="8" metaname="tDBInput_5" offsetLabelX="0" offsetLabelY="0" source="tDBInput_5" target="tMap_3">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row11" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
@@ -1678,11 +1904,6 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_2" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
