@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="__-Ma8KkfEfGb6N3o9l5IMA" name="Default">
+  <contextParameter xmi:id="__-0GAKkfEfGb6N3o9l5IMA" comment="" name="client_group" prompt="client_group?" promptNeeded="false" type="id_String" value="&quot;TOMS&quot;"/>
+  <contextParameter xmi:id="__-0GAakfEfGb6N3o9l5IMA" comment="" name="customer" prompt="customer?" promptNeeded="false" type="id_String" value="&quot;Large&quot;"/>
+  <contextParameter xmi:id="__-0GAqkfEfGb6N3o9l5IMA" comment="" name="max_update_time" prompt="max_update_time?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="__-0GA6kfEfGb6N3o9l5IMA" comment="" name="lookback_start_date" prompt="lookback_start_date?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="__-0GBKkfEfGb6N3o9l5IMA" comment="" name="tenant_vibe" prompt="tenant_vibe?" promptNeeded="false" type="id_String" value="10"/>
+  <contextParameter xmi:id="__-0GBakfEfGb6N3o9l5IMA" comment="" name="client_id" prompt="client_id?" promptNeeded="false" type="id_String" value="4850"/>
+  <contextParameter xmi:id="__-0GBqkfEfGb6N3o9l5IMA" comment="" name="lookback_start_dt" prompt="lookback_start_dt?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="__-0GB6kfEfGb6N3o9l5IMA" comment="" name="debugDeleteQuery" prompt="debugDeleteQuery?" promptNeeded="false" type="id_String" value=""/>
+  <contextParameter xmi:id="__-0GCKkfEfGb6N3o9l5IMA" comment="" name="new_watermark" prompt="new_watermark?" promptNeeded="false" type="id_String" value=""/>
+</talendfile:ContextType>

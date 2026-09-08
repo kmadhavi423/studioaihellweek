@@ -1,0 +1,35 @@
+{
+  "itemId" : "_I7X_gKirEfGb6N3o9l5IMA",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "__-Lz4KkfEfGb6N3o9l5IMA",
+    "parameterList" : [ {
+      "id" : "__-0GAKkfEfGb6N3o9l5IMA",
+      "name" : "client_group"
+    }, {
+      "id" : "__-0GAakfEfGb6N3o9l5IMA",
+      "name" : "customer"
+    }, {
+      "id" : "__-0GAqkfEfGb6N3o9l5IMA",
+      "name" : "max_update_time"
+    }, {
+      "id" : "__-0GA6kfEfGb6N3o9l5IMA",
+      "name" : "lookback_start_date"
+    }, {
+      "id" : "__-0GBKkfEfGb6N3o9l5IMA",
+      "name" : "tenant_vibe"
+    }, {
+      "id" : "__-0GBakfEfGb6N3o9l5IMA",
+      "name" : "client_id"
+    }, {
+      "id" : "__-0GBqkfEfGb6N3o9l5IMA",
+      "name" : "lookback_start_dt"
+    }, {
+      "id" : "__-0GB6kfEfGb6N3o9l5IMA",
+      "name" : "debugDeleteQuery"
+    }, {
+      "id" : "__-0GCKkfEfGb6N3o9l5IMA",
+      "name" : "new_watermark"
+    } ]
+  } ]
+}

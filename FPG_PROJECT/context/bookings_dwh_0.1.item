@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_me1pYB9vEfGHeoy_utqjAQ" confirmationNeeded="false" hide="false" name="Default">
+  <contextParameter xmi:id="_mfZqEB9vEfGHeoy_utqjAQ" comment="Name of table to load data into" name="landing_table_name" prompt="landing_table_name?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="LND_BOOKINGS"/>
+  <contextParameter xmi:id="_oziP4B9vEfGHeoy_utqjAQ" comment="" name="staging_table_name" prompt="staging_table_name?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="STG_BOOKINGS"/>
+  <contextParameter xmi:id="_vsbaUB9vEfGHeoy_utqjAQ" comment="" name="core_table_name" prompt="core_table_name?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="CORE_BOOKINGS"/>
+  <contextParameter xmi:id="_cQwyQCEkEfGzoebTOw4nyA" comment="Job Status Tracking" name="etl_control_table_name" prompt="etl_control_table_name?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="ETL_CONTROL"/>
+</talendfile:ContextType>

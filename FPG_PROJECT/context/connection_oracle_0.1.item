@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_shnKsB0rEfGYQ4SJNtfPLw" confirmationNeeded="false" hide="false" name="Default">
+  <contextParameter xmi:id="_siRSAB0rEfGYQ4SJNtfPLw" comment="" name="connection_oracle_hostname" prompt="connection_oracle_hostname?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="localhost"/>
+  <contextParameter xmi:id="_siRSAR0rEfGYQ4SJNtfPLw" comment="" name="connection_oracle_port" prompt="connection_oracle_port?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="1521"/>
+  <contextParameter xmi:id="_siRSAh0rEfGYQ4SJNtfPLw" comment="" name="connection_oracle_username" prompt="connection_oracle_username?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="talend"/>
+  <contextParameter xmi:id="_siRSAx0rEfGYQ4SJNtfPLw" comment="" name="connection_oracle_password" prompt="connection_oracle_password?" promptNeeded="false" repositoryContextId="built-in" type="id_Password" value="enc:system.encryption.key.v1:GuxboKbK0PBdL0mQ0qgPF7zlvmpZhxP91GrjuM1kI7F7I5cF"/>
+  <contextParameter xmi:id="_siRSBB0rEfGYQ4SJNtfPLw" comment="" name="connection_oracle_database" prompt="connection_oracle_database?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="FREEPDB1"/>
+  <contextParameter xmi:id="_siRSBR0rEfGYQ4SJNtfPLw" comment="" name="connection_oracle_schema" prompt="connection_oracle_schema?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="TALEND"/>
+  <contextParameter xmi:id="_tLIMUB0sEfGYQ4SJNtfPLw" comment="" name="connection_oracle_additional_params" prompt="connection_oracle_additional_params?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+</talendfile:ContextType>

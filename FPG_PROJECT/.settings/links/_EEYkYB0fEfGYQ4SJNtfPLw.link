@@ -1,0 +1,204 @@
+{
+  "itemId" : "_EEYkYB0fEfGYQ4SJNtfPLw",
+  "contextList" : [ {
+    "contextName" : "Mixed",
+    "repoId" : "_42930B_eEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_DB05YDNTEfGs3aAeezyB_Q",
+      "name" : "die_on_failure"
+    } ]
+  }, {
+    "contextName" : "Mixed",
+    "repoId" : "_me1CUB9vEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_cQwyQCEkEfGzoebTOw4nyA",
+      "name" : "etl_control_table_name"
+    }, {
+      "id" : "_mfZqEB9vEfGHeoy_utqjAQ",
+      "name" : "landing_table_name"
+    } ]
+  }, {
+    "contextName" : "Mixed",
+    "repoId" : "_shmjoB0rEfGYQ4SJNtfPLw",
+    "parameterList" : [ {
+      "id" : "_tLIMUB0sEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_additional_params"
+    }, {
+      "id" : "_siRSBB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_database"
+    }, {
+      "id" : "_siRSAB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_hostname"
+    }, {
+      "id" : "_siRSAx0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_password"
+    }, {
+      "id" : "_siRSAR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_port"
+    }, {
+      "id" : "_siRSBR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_schema"
+    }, {
+      "id" : "_siRSAh0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_username"
+    } ]
+  }, {
+    "contextName" : "Invalid",
+    "repoId" : "_42930B_eEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_DB05YDNTEfGs3aAeezyB_Q",
+      "name" : "die_on_failure"
+    } ]
+  }, {
+    "contextName" : "Invalid",
+    "repoId" : "_me1CUB9vEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_cQwyQCEkEfGzoebTOw4nyA",
+      "name" : "etl_control_table_name"
+    }, {
+      "id" : "_mfZqEB9vEfGHeoy_utqjAQ",
+      "name" : "landing_table_name"
+    } ]
+  }, {
+    "contextName" : "Invalid",
+    "repoId" : "_shmjoB0rEfGYQ4SJNtfPLw",
+    "parameterList" : [ {
+      "id" : "_tLIMUB0sEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_additional_params"
+    }, {
+      "id" : "_siRSBB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_database"
+    }, {
+      "id" : "_siRSAB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_hostname"
+    }, {
+      "id" : "_siRSAx0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_password"
+    }, {
+      "id" : "_siRSAR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_port"
+    }, {
+      "id" : "_siRSBR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_schema"
+    }, {
+      "id" : "_siRSAh0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_username"
+    } ]
+  }, {
+    "contextName" : "Valid",
+    "repoId" : "_42930B_eEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_DB05YDNTEfGs3aAeezyB_Q",
+      "name" : "die_on_failure"
+    } ]
+  }, {
+    "contextName" : "Valid",
+    "repoId" : "_me1CUB9vEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_cQwyQCEkEfGzoebTOw4nyA",
+      "name" : "etl_control_table_name"
+    }, {
+      "id" : "_mfZqEB9vEfGHeoy_utqjAQ",
+      "name" : "landing_table_name"
+    } ]
+  }, {
+    "contextName" : "Valid",
+    "repoId" : "_shmjoB0rEfGYQ4SJNtfPLw",
+    "parameterList" : [ {
+      "id" : "_tLIMUB0sEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_additional_params"
+    }, {
+      "id" : "_siRSBB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_database"
+    }, {
+      "id" : "_siRSAB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_hostname"
+    }, {
+      "id" : "_siRSAx0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_password"
+    }, {
+      "id" : "_siRSAR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_port"
+    }, {
+      "id" : "_siRSBR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_schema"
+    }, {
+      "id" : "_siRSAh0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_username"
+    } ]
+  }, {
+    "contextName" : "Empty",
+    "repoId" : "_42930B_eEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_DB05YDNTEfGs3aAeezyB_Q",
+      "name" : "die_on_failure"
+    } ]
+  }, {
+    "contextName" : "Empty",
+    "repoId" : "_me1CUB9vEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_cQwyQCEkEfGzoebTOw4nyA",
+      "name" : "etl_control_table_name"
+    }, {
+      "id" : "_mfZqEB9vEfGHeoy_utqjAQ",
+      "name" : "landing_table_name"
+    } ]
+  }, {
+    "contextName" : "Empty",
+    "repoId" : "_shmjoB0rEfGYQ4SJNtfPLw",
+    "parameterList" : [ {
+      "id" : "_tLIMUB0sEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_additional_params"
+    }, {
+      "id" : "_siRSBB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_database"
+    }, {
+      "id" : "_siRSAB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_hostname"
+    }, {
+      "id" : "_siRSAx0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_password"
+    }, {
+      "id" : "_siRSAR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_port"
+    }, {
+      "id" : "_siRSBR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_schema"
+    }, {
+      "id" : "_siRSAh0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_username"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_42930B_eEfGHeoy_utqjAQ",
+    "parameterList" : [ {
+      "id" : "_DB05YDNTEfGs3aAeezyB_Q",
+      "name" : "die_on_failure"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_shmjoB0rEfGYQ4SJNtfPLw",
+    "parameterList" : [ {
+      "id" : "_siRSAB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_hostname"
+    }, {
+      "id" : "_siRSAR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_port"
+    }, {
+      "id" : "_siRSAh0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_username"
+    }, {
+      "id" : "_siRSAx0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_password"
+    }, {
+      "id" : "_siRSBB0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_database"
+    }, {
+      "id" : "_siRSBR0rEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_schema"
+    }, {
+      "id" : "_tLIMUB0sEfGYQ4SJNtfPLw",
+      "name" : "connection_oracle_additional_params"
+    } ]
+  } ]
+}

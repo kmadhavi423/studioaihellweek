@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore">
+  <TalendMetadata:DatabaseConnection xmi:id="_EFhOYKisEfGb6N3o9l5IMA" name="Postgres_rep_connection" id="_5hxi0KirEfGb6N3o9l5IMA" label="Postgres_rep_connection" dataPackage="_EJyDUKisEfGb6N3o9l5IMA" DatabaseType="PostgreSQL" DriverClass="org.postgresql.Driver" URL="jdbc:postgresql://172.20.18.176:5432/Adventureworks?" dbVersionString="V9_X" Port="5432" Username="qmi" Password="enc:system.encryption.key.v2:X2iq8nWZ0uUZFLS12cLQqErd7WqeYMH40ruvDnBRQ6iIzPIwkouEBIwnkkI=" ServerName="172.20.18.176" DatasourceName="" FileFieldName="" SID="Adventureworks" SqlSynthax="" StringQuote="" NullChar="" DbmsId="postgres_id" ProductId="POSTGRESQL" AdditionalParams="" StandardSQL="true" SQLMode="false" UiSchema="" supportNLS="false">
+    <taggedValue xmi:id="_EFhOYaisEfGb6N3o9l5IMA" tag="Is Conn Need Reload" value="false"/>
+    <taggedValue xmi:id="_EF1XcKisEfGb6N3o9l5IMA" tag="package filter" value=""/>
+    <taggedValue xmi:id="_EF5B0KisEfGb6N3o9l5IMA" tag="Status" value=""/>
+    <taggedValue xmi:id="_EF5B0aisEfGb6N3o9l5IMA" tag="Version" value="0.1"/>
+    <taggedValue xmi:id="_EF5B0qisEfGb6N3o9l5IMA" tag="Purpose" value=""/>
+    <taggedValue xmi:id="_EF5B06isEfGb6N3o9l5IMA" tag="Description" value=""/>
+    <taggedValue xmi:id="_EF5B1KisEfGb6N3o9l5IMA" tag="Author" value=""/>
+    <taggedValue xmi:id="_EF5B1aisEfGb6N3o9l5IMA" tag="otherParameter"/>
+    <taggedValue xmi:id="_EHZdsKisEfGb6N3o9l5IMA" tag="DB ProductName" value="PostgreSQL"/>
+    <taggedValue xmi:id="_EHZdsaisEfGb6N3o9l5IMA" tag="DB ProductVersion" value="12.18"/>
+    <taggedValue xmi:id="_EHZdsqisEfGb6N3o9l5IMA" tag="DB IdentifierQuoteString" value="&quot;"/>
+    <parameters xmi:id="_EFhOYqisEfGb6N3o9l5IMA" key="CONN_PARA_KEY_USERNAME" value="qmi"/>
+  </TalendMetadata:DatabaseConnection>
+  <orgomg.cwm.resource.relational:Catalog xmi:id="_EJyDUKisEfGb6N3o9l5IMA" name="Adventureworks" dataManager="_EFhOYKisEfGb6N3o9l5IMA">
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqYKisEfGb6N3o9l5IMA" name="audit"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqYaisEfGb6N3o9l5IMA" name="control"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqYqisEfGb6N3o9l5IMA" name="hr"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqY6isEfGb6N3o9l5IMA" name="humanresources"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqZKisEfGb6N3o9l5IMA" name="information_schema"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqZaisEfGb6N3o9l5IMA" name="pe"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqZqisEfGb6N3o9l5IMA" name="person"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqZ6isEfGb6N3o9l5IMA" name="pg_catalog"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqaKisEfGb6N3o9l5IMA" name="pr"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqaaisEfGb6N3o9l5IMA" name="production"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqaqisEfGb6N3o9l5IMA" name="pu"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqa6isEfGb6N3o9l5IMA" name="public"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqbKisEfGb6N3o9l5IMA" name="purchasing"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqbaisEfGb6N3o9l5IMA" name="sa"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqbqisEfGb6N3o9l5IMA" name="sales"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_EJyqb6isEfGb6N3o9l5IMA" name="staging"/>
+  </orgomg.cwm.resource.relational:Catalog>
+</xmi:XMI>
