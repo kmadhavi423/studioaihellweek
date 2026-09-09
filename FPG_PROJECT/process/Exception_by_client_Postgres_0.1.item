@@ -11,6 +11,7 @@
     <contextParameter comment="" name="del_new_watermark" prompt="del_new_watermark?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_nNw816pUEfGb6N3o9l5IMA"/>
     <contextParameter comment="" name="gen_new_watermark" prompt="gen_new_watermark?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_nNw82KpUEfGb6N3o9l5IMA"/>
     <contextParameter comment="" name="exception_lookback_start_dt" prompt="exception_lookback_start_dt?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_nNw82apUEfGb6N3o9l5IMA"/>
+    <contextParameter comment="" name="touched_package_ids" prompt="touched_package_ids?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_4K8hAKxUEfG61ZSBM0mTkA"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -217,7 +218,7 @@
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tJavaRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyyMMddHHmm&quot;);&#xD;&#xA;Date raw = sdf.parse(row1.max_update_time);&#xD;&#xA;Calendar cal = Calendar.getInstance();&#xD;&#xA;cal.setTime(raw);&#xD;&#xA;cal.add(Calendar.MINUTE, -120);&#xD;&#xA;String buffered = sdf.format(cal.getTime());&#xD;&#xA;&#xD;&#xA;if (&quot;Exc&quot;.equals(row1.source_system)) context.exc_max_update_time = buffered;&#xD;&#xA;else if (&quot;Del&quot;.equals(row1.source_system)) context.del_max_update_time = buffered;&#xD;&#xA;else if (&quot;Gen&quot;.equals(row1.source_system)) context.gen_max_update_time = buffered;&#xD;&#xA;&#xD;&#xA;System.out.println(&quot;exc_max_update_time &quot; + context.exc_max_update_time);&#xD;&#xA;System.out.println(&quot;del_max_update_time &quot; + context.del_max_update_time);&#xD;&#xA;System.out.println(&quot;gen_max_update_time &quot; + context.gen_max_update_time);&#xD;&#xA;&#xD;&#xA;Calendar cal1 = Calendar.getInstance();&#xD;&#xA;cal1.add(Calendar.MONTH, -7);&#xD;&#xA;cal1.set(Calendar.DAY_OF_MONTH, 1);&#xD;&#xA;context.exception_lookback_start_dt = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(cal1.getTime());&#xD;&#xA;&#xD;&#xA;System.out.println(&quot;exception_lookback_start_dt &quot; + context.exception_lookback_start_dt);"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyyMMddHHmm&quot;);&#xD;&#xA;String buffered = null;&#xD;&#xA;&#xD;&#xA;if (row1.max_update_time != null &amp;&amp; !row1.max_update_time.trim().isEmpty()) {&#xD;&#xA;    try {&#xD;&#xA;        Date raw = sdf.parse(row1.max_update_time);&#xD;&#xA;        Calendar cal = Calendar.getInstance();&#xD;&#xA;        cal.setTime(raw);&#xD;&#xA;        cal.add(Calendar.MINUTE, -120);&#xD;&#xA;        buffered = sdf.format(cal.getTime());&#xD;&#xA;    } catch (ParseException e) {&#xD;&#xA;        System.out.println(&quot;WARNING: unparseable max_update_time for &quot; + row1.source_system + &quot;: '&quot; + row1.max_update_time + &quot;' — falling back to default&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (buffered == null) {&#xD;&#xA;    buffered = &quot;202603010000&quot;; // same fallback used by tFixedFlowInput_1&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (&quot;Exc&quot;.equals(row1.source_system)) context.exc_max_update_time = buffered;&#xD;&#xA;else if (&quot;Del&quot;.equals(row1.source_system)) context.del_max_update_time = buffered;&#xD;&#xA;else if (&quot;Gen&quot;.equals(row1.source_system)) context.gen_max_update_time = buffered;&#xD;&#xA;&#xD;&#xA;System.out.println(&quot;exc_max_update_time &quot; + context.exc_max_update_time);&#xD;&#xA;System.out.println(&quot;del_max_update_time &quot; + context.del_max_update_time);&#xD;&#xA;System.out.println(&quot;gen_max_update_time &quot; + context.gen_max_update_time);"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="import java.text.SimpleDateFormat;&#xD;&#xA;import java.text.ParseException;&#xD;&#xA;import java.util.Date;&#xD;&#xA;import java.util.Calendar;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1"/>
@@ -484,7 +485,7 @@
       <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out1">
         <mapperTableEntries name="ActivityCode" expression="row3.ActivityCode " type="id_String" nullable="true"/>
@@ -1282,7 +1283,7 @@
       <column comment="" key="false" length="-1" name="ExcReasonCode" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out">
         <mapperTableEntries name="ActivityCode" expression="row10.ActivityCode " type="id_String" nullable="true"/>
@@ -1491,7 +1492,7 @@
     <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
     <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlOutput" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -1776,51 +1777,12 @@
       <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
-      <column comment="" key="false" length="-1" name="ActivityCode" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcStatusCode" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="billToAccountNumber" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ClientID" nullable="true" pattern="" precision="-1" sourceType="INT8" type="id_Long" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExceptionReasonFullDescription" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExceptionReasonShortDescription" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExceptionStatusShortDescription" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcReportCountry" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcSLIC" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="logicalScan" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ReasonCdMiddle" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ReasonCdVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ReasonVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ResolutionCdFullText" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ResolutionCdMiddle" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ResolutionCdShort" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ResolutionCdVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ResolutionIsVIEWABLE" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TNRoleVsAlternate" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="altTrackNr" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="TrackingNumber" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcActivityCity" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcActivityStateProv" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="UTCOffSet" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="rtsInd" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="returnServiceIndictr" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="ExcDT" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="true" length="-1" name="ExcDT_Time" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ImportDT" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ImportTime_ms" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="insert_timestamp_cluster_min" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="Exception_Record_Rank" nullable="true" pattern="" precision="-1" sourceType="INT8" type="id_Long" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="SysSource" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="Exception_Curr_Flag" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcActivityCityFinal" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExcReportCountryCode" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="gmtOffset" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="Unique_Key" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ExceptionStatusDesc" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tAggregateRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="440">
+  <node componentName="tAggregateRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tAggregateRow_1" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tAggregateRow" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -1851,7 +1813,7 @@
       <column comment="" key="false" length="-1" name="SysSource" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1200" posY="440">
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="960" posY="560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_6" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tJavaRow" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
@@ -1873,7 +1835,7 @@
       <column comment="" key="false" length="-1" name="updated_at" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_Date" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tPostgresqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1360" posY="440">
+  <node componentName="tPostgresqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1160" posY="560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBOutput_2" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlOutput" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
@@ -1964,6 +1926,54 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tAggregateRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1080" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tAggregateRow_2" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tAggregateRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Processing" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tAggregateRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="TABLE" name="GROUPBYS">
+      <elementValue elementRef="OUTPUT_COLUMN" value="PackageID" id="0"/>
+      <elementValue elementRef="INPUT_COLUMN" value="PackageID" id="1"/>
+    </elementParameter>
+    <elementParameter field="TABLE" name="OPERATIONS"/>
+    <elementParameter field="TEXT" name="LIST_DELIMITER" value="&quot;,&quot;"/>
+    <elementParameter field="CHECK" name="USE_FINANCIAL_PRECISION" value="true"/>
+    <elementParameter field="CHECK" name="CHECK_TYPE_OVERFLOW" value="false"/>
+    <elementParameter field="CHECK" name="CHECK_ULP" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tAggregateRow_2">
+      <column comment="" key="false" length="-1" name="PackageID" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaFlex" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1280" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaFlex_1" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tJavaFlex" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.101 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Custom_Code" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tJavaFlex" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="CHECK" name="DATA_AUTO_PROPAGATE" value="true"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE_START" value="// start part of your Java code&#xA;StringBuilder sb = new StringBuilder();"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE_MAIN" value="// here is the main part of the component,&#xA;// a piece of code executed in the row&#xA;// loop&#xA;if (sb.length() > 0) sb.append(&quot;,&quot;);&#xD;&#xA;sb.append(&quot;'&quot;).append(row18.PackageID.replace(&quot;'&quot;, &quot;''&quot;)).append(&quot;'&quot;);"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE_END" value="// end of the component, outside/closing the loop&#xA;context.touched_package_ids = sb.toString();&#xD;&#xA;System.out.println(&quot;touched_package_ids: &quot; + context.touched_package_ids);"/>
+    <elementParameter field="CHECK" name="Version_V2_0" value="false" show="false"/>
+    <elementParameter field="CHECK" name="Version_V3_2" value="false" show="false"/>
+    <elementParameter field="CHECK" name="Version_V4.0" value="true" show="false"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaFlex_1"/>
+  </node>
   <node componentName="tPostgresqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1360" posY="280">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_1" show="false"/>
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlRow" show="false"/>
@@ -2049,6 +2059,7 @@
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBRow_2"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -2060,11 +2071,10 @@
     <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlRow" show="false"/>
     <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
     <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
-    <elementParameter field="CHECK" name="START" value="true" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
     <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
     <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
     <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlRow" show="false"/>
     <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
@@ -2082,7 +2092,7 @@
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="INSERT INTO &quot;staging&quot;.&quot;exception_current_by_package&quot; AS target&#xD;&#xA;SELECT DISTINCT ON (&quot;PackageID&quot;)&#xD;&#xA;  &quot;PackageID&quot;, &quot;TrackingNumber&quot;, &quot;ClientID&quot;, &quot;Exception_Record_Rank&quot;,&#xD;&#xA;  &quot;ExcDT&quot; AS &quot;LastExceptionDate&quot;, &quot;ExcDT_Time&quot; AS &quot;LastExceptionTime&quot;,&#xD;&#xA;  &quot;ExceptionReasonFullDescription&quot; AS &quot;LastExceptionReasonDesc&quot;,&#xD;&#xA;  &quot;ExcReasonCode&quot; AS &quot;LastExceptionReasonCode&quot;,&#xD;&#xA;  &quot;ExceptionStatusDesc&quot; AS &quot;LastExceptionStatusDesc&quot;,&#xD;&#xA;  &quot;ReasonCdVIEWABLE&quot; AS &quot;LastExcReasonCdVIEWABLE&quot;,&#xD;&#xA;  &quot;ExcSLIC&quot; AS &quot;LastExceptionSLIC&quot;,&#xD;&#xA;  &quot;ResolutionCdVIEWABLE&quot; AS &quot;LastStatusResolCdVIEWABLE&quot;,&#xD;&#xA;  &quot;ResolutionIsVIEWABLE&quot; AS &quot;LastResolutionVIEWABLE&quot;,&#xD;&#xA;  &quot;ExcReportCountry&quot; AS &quot;LastExceptionCountry&quot;,&#xD;&#xA;  &quot;ExcActivityCity&quot; AS &quot;LastExceptionCity&quot;,&#xD;&#xA;  &quot;ExcActivityStateProv&quot; AS &quot;LastExceptionState&quot;,&#xD;&#xA;  &quot;ExcStatusCode&quot; AS &quot;LastExceptionStatusCode&quot;,&#xD;&#xA;  &quot;UTCOffSet&quot; AS &quot;LastExceptionUTCOffSet&quot;&#xD;&#xA;FROM &quot;staging&quot;.&quot;exception_base&quot;&#xD;&#xA;WHERE &quot;PackageID&quot; IN ( /* PackageIDs touched this batch */ )&#xD;&#xA;  AND (&quot;ReasonCdVIEWABLE&quot; &lt;> '01' OR &quot;ResolutionCdVIEWABLE&quot; &lt;> '01')&#xD;&#xA;ORDER BY &quot;PackageID&quot;, &quot;Exception_Record_Rank&quot; ASC&#xD;&#xA;ON CONFLICT (&quot;PackageID&quot;, &quot;ClientID&quot;) DO UPDATE SET&#xD;&#xA;  &quot;TrackingNumber&quot; = EXCLUDED.&quot;TrackingNumber&quot;,&#xD;&#xA;  &quot;Exception_Record_Rank&quot; = EXCLUDED.&quot;Exception_Record_Rank&quot;,&#xD;&#xA;  &quot;LastExceptionDate&quot; = EXCLUDED.&quot;LastExceptionDate&quot;,&#xD;&#xA;  &quot;LastExceptionTime&quot; = EXCLUDED.&quot;LastExceptionTime&quot;,&#xD;&#xA;  &quot;LastExceptionReasonDesc&quot; = EXCLUDED.&quot;LastExceptionReasonDesc&quot;,&#xD;&#xA;  &quot;LastExceptionReasonCode&quot; = EXCLUDED.&quot;LastExceptionReasonCode&quot;,&#xD;&#xA;  &quot;LastExceptionStatusDesc&quot; = EXCLUDED.&quot;LastExceptionStatusDesc&quot;,&#xD;&#xA;  &quot;LastExcReasonCdVIEWABLE&quot; = EXCLUDED.&quot;LastExcReasonCdVIEWABLE&quot;,&#xD;&#xA;  &quot;LastExceptionSLIC&quot; = EXCLUDED.&quot;LastExceptionSLIC&quot;,&#xD;&#xA;  &quot;LastStatusResolCdVIEWABLE&quot; = EXCLUDED.&quot;LastStatusResolCdVIEWABLE&quot;,&#xD;&#xA;  &quot;LastResolutionVIEWABLE&quot; = EXCLUDED.&quot;LastResolutionVIEWABLE&quot;,&#xD;&#xA;  &quot;LastExceptionCountry&quot; = EXCLUDED.&quot;LastExceptionCountry&quot;,&#xD;&#xA;  &quot;LastExceptionCity&quot; = EXCLUDED.&quot;LastExceptionCity&quot;,&#xD;&#xA;  &quot;LastExceptionState&quot; = EXCLUDED.&quot;LastExceptionState&quot;,&#xD;&#xA;  &quot;LastExceptionStatusCode&quot; = EXCLUDED.&quot;LastExceptionStatusCode&quot;,&#xD;&#xA;  &quot;LastExceptionUTCOffSet&quot; = EXCLUDED.&quot;LastExceptionUTCOffSet&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;INSERT INTO \&quot;staging\&quot;.\&quot;exception_current_by_package\&quot; AS target &quot;&#xD;&#xA;+&quot;(\&quot;PackageID\&quot;, \&quot;TrackingNumber\&quot;, \&quot;ClientID\&quot;, \&quot;Exception_Record_Rank\&quot;, \&quot;updated_at\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastExceptionDate\&quot;, \&quot;LastExceptionTime\&quot;, \&quot;LastExceptionReasonDesc\&quot;, \&quot;LastExceptionReasonCode\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastExceptionStatusDesc\&quot;, \&quot;LastExcReasonCdVIEWABLE\&quot;, \&quot;LastExceptionSLIC\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastStatusResolCdVIEWABLE\&quot;, \&quot;LastResolutionVIEWABLE\&quot;, \&quot;LastExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastExceptionCity\&quot;, \&quot;LastExceptionState\&quot;, \&quot;LastExceptionStatusCode\&quot;, \&quot;LastExceptionUTCOffSet\&quot;) &quot;&#xD;&#xA;+&quot;SELECT DISTINCT ON (\&quot;PackageID\&quot;) &quot;&#xD;&#xA;+&quot;  \&quot;PackageID\&quot;, \&quot;TrackingNumber\&quot;, \&quot;ClientID\&quot;, \&quot;Exception_Record_Rank\&quot;, now() AS \&quot;updated_at\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExcDT\&quot; AS \&quot;LastExceptionDate\&quot;, \&quot;ExcDT_Time\&quot; AS \&quot;LastExceptionTime\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExceptionReasonFullDescription\&quot; AS \&quot;LastExceptionReasonDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExcReasonCode\&quot; AS \&quot;LastExceptionReasonCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExceptionStatusDesc\&quot; AS \&quot;LastExceptionStatusDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ReasonCdVIEWABLE\&quot; AS \&quot;LastExcReasonCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExcSLIC\&quot; AS \&quot;LastExceptionSLIC\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ResolutionCdVIEWABLE\&quot; AS \&quot;LastStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ResolutionIsVIEWABLE\&quot; AS \&quot;LastResolutionVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExcReportCountry\&quot; AS \&quot;LastExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExcActivityCity\&quot; AS \&quot;LastExceptionCity\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExcActivityStateProv\&quot; AS \&quot;LastExceptionState\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;ExcStatusCode\&quot; AS \&quot;LastExceptionStatusCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;UTCOffSet\&quot; AS \&quot;LastExceptionUTCOffSet\&quot; &quot;&#xD;&#xA;+&quot;FROM \&quot;staging\&quot;.\&quot;exception_base\&quot; &quot;&#xD;&#xA;+&quot;WHERE \&quot;PackageID\&quot; IN (&quot; + context.touched_package_ids + &quot;) &quot;&#xD;&#xA;+&quot;  AND (\&quot;ReasonCdVIEWABLE\&quot; &lt;> '01' OR \&quot;ResolutionCdVIEWABLE\&quot; &lt;> '01') &quot;&#xD;&#xA;+&quot;ORDER BY \&quot;PackageID\&quot;, \&quot;Exception_Record_Rank\&quot; ASC &quot;&#xD;&#xA;+&quot;ON CONFLICT (\&quot;PackageID\&quot;, \&quot;ClientID\&quot;) DO UPDATE SET &quot;&#xD;&#xA;+&quot;  \&quot;TrackingNumber\&quot; = EXCLUDED.\&quot;TrackingNumber\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;Exception_Record_Rank\&quot; = EXCLUDED.\&quot;Exception_Record_Rank\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionDate\&quot; = EXCLUDED.\&quot;LastExceptionDate\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionTime\&quot; = EXCLUDED.\&quot;LastExceptionTime\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionReasonDesc\&quot; = EXCLUDED.\&quot;LastExceptionReasonDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionReasonCode\&quot; = EXCLUDED.\&quot;LastExceptionReasonCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionStatusDesc\&quot; = EXCLUDED.\&quot;LastExceptionStatusDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExcReasonCdVIEWABLE\&quot; = EXCLUDED.\&quot;LastExcReasonCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionSLIC\&quot; = EXCLUDED.\&quot;LastExceptionSLIC\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastStatusResolCdVIEWABLE\&quot; = EXCLUDED.\&quot;LastStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastResolutionVIEWABLE\&quot; = EXCLUDED.\&quot;LastResolutionVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionCountry\&quot; = EXCLUDED.\&quot;LastExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionCity\&quot; = EXCLUDED.\&quot;LastExceptionCity\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionState\&quot; = EXCLUDED.\&quot;LastExceptionState\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionStatusCode\&quot; = EXCLUDED.\&quot;LastExceptionStatusCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionUTCOffSet\&quot; = EXCLUDED.\&quot;LastExceptionUTCOffSet\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;updated_at\&quot; = now()&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
@@ -2095,7 +2105,100 @@
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBRow_3"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tPostgresqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="560" posY="1360">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_4" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v2:BjqNi8/FKfCLaVTQzAyV/ZLQeLKJQ2CBifq9C7rn" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;INSERT INTO \&quot;staging\&quot;.\&quot;exception_first_last_by_package\&quot; AS target &quot;&#xD;&#xA;+&quot;(\&quot;PackageID\&quot;, \&quot;TrackingNumber\&quot;, \&quot;ClientID\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;FirstActivityCode\&quot;, \&quot;FirstExceptionDate\&quot;, \&quot;FirstExceptionTime\&quot;, \&quot;FirstExceptionUTCOffSet\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;FirstExceptionCity\&quot;, \&quot;FirstExceptionSLIC\&quot;, \&quot;FirstExceptionState\&quot;, \&quot;FirstExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;FirstExceptionStatusCode\&quot;, \&quot;FirstExceptionStatusDesc\&quot;, \&quot;FirstStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;FirstExceptionReasonCode\&quot;, \&quot;FirstExceptionReasonDesc\&quot;, \&quot;FirstExcReasonCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastActivityCode\&quot;, \&quot;LastExceptionDate\&quot;, \&quot;LastExceptionTime\&quot;, \&quot;LastExceptionUTCOffSet\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastExceptionCity\&quot;, \&quot;LastExceptionSLIC\&quot;, \&quot;LastExceptionState\&quot;, \&quot;LastExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastExceptionStatusCode\&quot;, \&quot;LastExceptionStatusDesc\&quot;, \&quot;LastStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot; \&quot;LastExceptionReasonCode\&quot;, \&quot;LastExceptionReasonDesc\&quot;, \&quot;LastExcReasonCdVIEWABLE\&quot;) &quot;&#xD;&#xA;+&quot;SELECT &quot;&#xD;&#xA;+&quot;  \&quot;PackageID\&quot;, \&quot;TrackingNumber\&quot;, \&quot;ClientID\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ActivityCode\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstActivityCode\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcDT\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionDate\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcDT_Time\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionTime\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;UTCOffSet\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionUTCOffSet\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcActivityCity\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionCity\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcSLIC\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionSLIC\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcActivityStateProv\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionState\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcReportCountry\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcStatusCode\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionStatusCode\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExceptionStatusDesc\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionStatusDesc\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ResolutionCdVIEWABLE\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcReasonCode\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionReasonCode\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExceptionReasonFullDescription\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExceptionReasonDesc\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ReasonCdVIEWABLE\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; DESC))[1] AS \&quot;FirstExcReasonCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ActivityCode\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastActivityCode\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcDT\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionDate\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcDT_Time\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionTime\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;UTCOffSet\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionUTCOffSet\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcActivityCity\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionCity\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcSLIC\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionSLIC\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcActivityStateProv\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionState\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcReportCountry\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcStatusCode\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionStatusCode\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExceptionStatusDesc\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionStatusDesc\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ResolutionCdVIEWABLE\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExcReasonCode\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionReasonCode\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ExceptionReasonFullDescription\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExceptionReasonDesc\&quot;, &quot;&#xD;&#xA;+&quot;  (ARRAY_AGG(\&quot;ReasonCdVIEWABLE\&quot; ORDER BY \&quot;Exception_Record_Rank\&quot; ASC))[1] AS \&quot;LastExcReasonCdVIEWABLE\&quot; &quot;&#xD;&#xA;+&quot;FROM \&quot;staging\&quot;.\&quot;exception_base\&quot; &quot;&#xD;&#xA;+&quot;WHERE \&quot;PackageID\&quot; IN (&quot; + context.touched_package_ids + &quot;) &quot;&#xD;&#xA;+&quot;GROUP BY \&quot;PackageID\&quot;, \&quot;TrackingNumber\&quot;, \&quot;ClientID\&quot; &quot;&#xD;&#xA;+&quot;ON CONFLICT (\&quot;PackageID\&quot;, \&quot;TrackingNumber\&quot;, \&quot;ClientID\&quot;) DO UPDATE SET &quot;&#xD;&#xA;+&quot;  \&quot;FirstActivityCode\&quot; = EXCLUDED.\&quot;FirstActivityCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionDate\&quot; = EXCLUDED.\&quot;FirstExceptionDate\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionTime\&quot; = EXCLUDED.\&quot;FirstExceptionTime\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionUTCOffSet\&quot; = EXCLUDED.\&quot;FirstExceptionUTCOffSet\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionCity\&quot; = EXCLUDED.\&quot;FirstExceptionCity\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionSLIC\&quot; = EXCLUDED.\&quot;FirstExceptionSLIC\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionState\&quot; = EXCLUDED.\&quot;FirstExceptionState\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionCountry\&quot; = EXCLUDED.\&quot;FirstExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionStatusCode\&quot; = EXCLUDED.\&quot;FirstExceptionStatusCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionStatusDesc\&quot; = EXCLUDED.\&quot;FirstExceptionStatusDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstStatusResolCdVIEWABLE\&quot; = EXCLUDED.\&quot;FirstStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionReasonCode\&quot; = EXCLUDED.\&quot;FirstExceptionReasonCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExceptionReasonDesc\&quot; = EXCLUDED.\&quot;FirstExceptionReasonDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;FirstExcReasonCdVIEWABLE\&quot; = EXCLUDED.\&quot;FirstExcReasonCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastActivityCode\&quot; = EXCLUDED.\&quot;LastActivityCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionDate\&quot; = EXCLUDED.\&quot;LastExceptionDate\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionTime\&quot; = EXCLUDED.\&quot;LastExceptionTime\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionUTCOffSet\&quot; = EXCLUDED.\&quot;LastExceptionUTCOffSet\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionCity\&quot; = EXCLUDED.\&quot;LastExceptionCity\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionSLIC\&quot; = EXCLUDED.\&quot;LastExceptionSLIC\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionState\&quot; = EXCLUDED.\&quot;LastExceptionState\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionCountry\&quot; = EXCLUDED.\&quot;LastExceptionCountry\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionStatusCode\&quot; = EXCLUDED.\&quot;LastExceptionStatusCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionStatusDesc\&quot; = EXCLUDED.\&quot;LastExceptionStatusDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastStatusResolCdVIEWABLE\&quot; = EXCLUDED.\&quot;LastStatusResolCdVIEWABLE\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionReasonCode\&quot; = EXCLUDED.\&quot;LastExceptionReasonCode\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExceptionReasonDesc\&quot; = EXCLUDED.\&quot;LastExceptionReasonDesc\&quot;, &quot;&#xD;&#xA;+&quot;  \&quot;LastExcReasonCdVIEWABLE\&quot; = EXCLUDED.\&quot;LastExcReasonCdVIEWABLE\&quot;&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBRow_4"/>
+    <metadata connector="REJECT" name="REJECT">
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tPostgresqlRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="1360">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_5" show="false"/>
+    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tPostgresqlRow" show="false"/>
+    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
+    <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/PostgreSQL" show="false"/>
+    <elementParameter field="CHECK" name="START" value="false" show="false"/>
+    <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
+    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
+    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tPostgresqlRow" show="false"/>
+    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
+    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="V9_X" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;5432&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="TYPE" value="PostgreSQL" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v2:A6l2KNimdPFPWFQ0uRFVevbQ/xbkzsuJnzI1LJs6" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;INSERT INTO \&quot;control\&quot;.\&quot;exception_watermark\&quot; &quot;&#xD;&#xA;+&quot;(\&quot;customer\&quot;, \&quot;client_group\&quot;, \&quot;source_system\&quot;, \&quot;max_update_time\&quot;, \&quot;updated_at\&quot;) &quot;&#xD;&#xA;+&quot;VALUES &quot;&#xD;&#xA;+&quot;  ('&quot;+context.customer+&quot;', '&quot;+context.client_group+&quot;', 'Exc', '&quot;+context.exc_new_watermark+&quot;', now()), &quot;&#xD;&#xA;+&quot;  ('&quot;+context.customer+&quot;', '&quot;+context.client_group+&quot;', 'Del', '&quot;+context.del_new_watermark+&quot;', now()), &quot;&#xD;&#xA;+&quot;  ('&quot;+context.customer+&quot;', '&quot;+context.client_group+&quot;', 'Gen', '&quot;+context.gen_new_watermark+&quot;', now()) &quot;&#xD;&#xA;+&quot;ON CONFLICT (\&quot;customer\&quot;, \&quot;client_group\&quot;, \&quot;source_system\&quot;) &quot;&#xD;&#xA;+&quot;DO UPDATE SET \&quot;max_update_time\&quot; = EXCLUDED.\&quot;max_update_time\&quot;, \&quot;updated_at\&quot; = EXCLUDED.\&quot;updated_at\&quot;&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="PROPAGATE_RECORD_SET" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="RECORD_SET_COLUMN" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_PREPAREDSTATEMENT" value="false"/>
+    <elementParameter field="TABLE" name="SET_PREPAREDSTATEMENT_PARAMETERS" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBRow_5"/>
     <metadata connector="REJECT" name="REJECT">
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -2294,6 +2397,10 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row15" show="false"/>
   </connection>
+  <connection connectorName="FLOW" label="row19" lineStyle="0" metaname="tDBOutput_1" offsetLabelX="0" offsetLabelY="0" source="tDBOutput_1" target="tAggregateRow_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row19" show="false"/>
+  </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBOutput_1" offsetLabelX="0" offsetLabelY="0" source="tDBOutput_1" target="tDBRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk4" show="false"/>
   </connection>
@@ -2314,6 +2421,19 @@
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row17" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row18" lineStyle="0" metaname="tAggregateRow_2" offsetLabelX="0" offsetLabelY="0" source="tAggregateRow_2" target="tJavaFlex_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row18" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBRow_2" offsetLabelX="0" offsetLabelY="0" source="tDBRow_2" target="tDBRow_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk2" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBRow_3" offsetLabelX="0" offsetLabelY="0" source="tDBRow_3" target="tDBRow_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk3" show="false"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tDBRow_4" offsetLabelX="0" offsetLabelY="0" source="tDBRow_4" target="tDBRow_5">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
@@ -2353,6 +2473,16 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_3" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_4" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBRow_5" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>

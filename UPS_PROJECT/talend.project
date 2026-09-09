@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendProperties="http://www.talend.org/properties">
+  <TalendProperties:Project xmi:id="_L1u2IaxAEfGL3-4IzXVwoA" label="UPS_PROJECT" language="java" technicalLabel="UPS_PROJECT" author="_L1u2IqxAEfGL3-4IzXVwoA" productVersion="Qlik Talend Cloud Enterprise Edition-8.0.1.20260825_0408-patch" url="{&quot;commitLogPattern&quot;:&quot;{0}&quot;,&quot;location&quot;:&quot;https://github.com/kmadhavi423/studioaihellweek.git&quot;,&quot;settings&quot;:&quot;000&quot;,&quot;storage&quot;:&quot;git&quot;}" type="DQ" itemsRelationVersion="1.3" bigData="false">
+    <migrationTask xmi:id="_L3H9QKxAEfGL3-4IzXVwoA" id="org.talend.repository.model.migration.CheckProductVersionMigrationTask" breaks="7.1.0" version="7.1.1"/>
+  </TalendProperties:Project>
+  <TalendProperties:User xmi:id="_L1u2IqxAEfGL3-4IzXVwoA" login="madhavi.konda.qlik.com@talendconsultingus.aws" firstName="Madhavi" lastName="Konda" type="DQ"/>
+  <TalendProperties:User xmi:id="_tWLG8KxAEfGl_sLebr0mXw" login="mkonda.talend.com@talendconsultingus.aws" firstName="Madhavi" lastName="Konda" type="DQ"/>
+  <TalendProperties:User xmi:id="_J9RqQKxBEfGoXKBQC1BXHA" login="madhavi.konda@9axn9p3izhd2ff3.us.qlikcloud.com" firstName="Madhavi" lastName="Konda" type="DQ"/>
+  <TalendProperties:User xmi:id="_J9RqQaxBEfGoXKBQC1BXHA" login="madhavi.konda@9axn9p3izhd2ff3.us.qlikcloud.com" firstName="Madhavi" lastName="Konda" type="DQ"/>
+</xmi:XMI>
